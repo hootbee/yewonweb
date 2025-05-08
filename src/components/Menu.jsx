@@ -1,3 +1,5 @@
+//src/components/Menu.jsx
+
 import React from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -32,7 +34,7 @@ const Menu = () => {
         <h5>ABOUT</h5>
       </a>
 
-      <a href="/products">
+      <a href="#news">
         <h5>NEWS</h5>
       </a>
 
@@ -48,7 +50,7 @@ const Menu = () => {
         <h5>OPENINGS</h5>
       </a>
 
-      <a href="/login">
+      <a href="#contact">
         <h5>CONTACT</h5>
       </a>
     </MenuWrapper>

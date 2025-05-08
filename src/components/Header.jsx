@@ -1,3 +1,5 @@
+//src/components/Header.jsx
+
 import React from "react";
 import styled from "styled-components";
 import logo from "../img/logo.png";
@@ -11,7 +13,6 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
 
 const Logo = styled.img`
   padding: 0;

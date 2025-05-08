@@ -1,3 +1,5 @@
+//src/home/Final.jsx
+
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import img from "../img/mood.png";

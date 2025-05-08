@@ -1,3 +1,5 @@
+//src/App.js
+
 import React from "react";
 import Header from "./components/Header";
 import Home from "./menu/Home";
@@ -12,6 +14,8 @@ import Login from "./menu/Login";
 import Quadstar from "./product/Quadstar";
 import Magicquatturo1 from "./product/Magicquattuor1";
 import Magicquatturo2 from "./product/Magicquatturo2";
+import Footer from "./components/Footer";
+import { createGlobalStyle } from "styled-components";
 
 const router = createBrowserRouter([
   {
@@ -48,23 +52,31 @@ const router = createBrowserRouter([
   },
   {
     path: "quadstar",
-    element: <Quadstar/>,
+    element: <Quadstar />,
   },
   {
     path: "quatturo1",
-    element: <Magicquatturo1/>
+    element: <Magicquatturo1 />,
   },
   {
     path: "quatturo2",
-    element: <Magicquatturo2/>
-  }
+    element: <Magicquatturo2 />,
+  },
 ]);
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+`;
 
 const App = () => {
   return (
     <>
+      <GlobalStyle />
       <Header></Header>
       <RouterProvider router={router} />
+      <Footer></Footer>
     </>
   );
 };

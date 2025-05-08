@@ -1,3 +1,5 @@
+//src/home/Introduce.jsx
+
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import img1 from "../img/mood.png";
