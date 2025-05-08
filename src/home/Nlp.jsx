@@ -228,7 +228,7 @@ const BannerImgContent = styled.p`
   }
 `;
 
-const Final = () => {
+const Nlp = () => {
   const [inView, setInView] = useState({});
   const [scrollY, setScrollY] = useState(0);
   const [docHeight, setDocHeight] = useState(0);
@@ -319,4 +319,4 @@ const Final = () => {
   );
 };
 
-export default Final;
+export default Nlp;
