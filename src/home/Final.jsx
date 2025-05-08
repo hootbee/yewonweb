@@ -15,19 +15,6 @@ const slideUp = keyframes`
   }
 `;
 
-const GradientOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
-  opacity: ${({ opacity }) => opacity};
-  z-index: 5;
-  transition: opacity 0.2s ease;
-`;
-
 const ImgWrapper = styled.div`
   width: 100%;
   height: auto;
@@ -231,23 +218,6 @@ const BannerImgContent = styled.p`
 const Final = () => {
   const [inView, setInView] = useState({});
   const refs = useRef([]);
-  const [scrollY, setScrollY] = useState(0);
-  const [docHeight, setDocHeight] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    setDocHeight(document.body.scrollHeight - window.innerHeight);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const startY = docHeight * (2 / 3);
-  const gradientOpacity =
-    scrollY < startY
-      ? 0
-      : Math.min(((scrollY - startY) / (docHeight - startY)) * 0.8 + 0.2, 0.9); // 항상 최소 0.2 유지
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -277,7 +247,6 @@ const Final = () => {
 
   return (
     <>
-      <GradientOverlay opacity={gradientOpacity} />
       <ImgWrapper>
         <Img src={img} />
         <Comment>
