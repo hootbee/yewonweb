@@ -1,5 +1,3 @@
-//src/home/Final.jsx
-
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import img from "../img/mood.png";
@@ -7,24 +5,35 @@ import img2 from "../img/explore.png";
 import { FaChevronRight } from "react-icons/fa";
 
 const slideUp = keyframes`
-    0% {
-        transform: translateY(30%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+const GradientOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+  opacity: ${({ opacity }) => opacity};
+  z-index: 5;
+  transition: opacity 0.2s ease;
 `;
 
 const ImgWrapper = styled.div`
   width: 100%;
   height: auto;
-  margin: 0;
-  padding: 0;
+  margin-top: 100px;
   position: relative;
   overflow-x: hidden;
-  margin-top: 100px;
 `;
 
 const Img = styled.img`
@@ -37,8 +46,6 @@ const Comment = styled.div`
   height: auto;
   position: absolute;
   top: 0;
-  margin: 0 0;
-  padding: 0;
   margin-top: 50px;
   @media screen and (min-width: 768px) {
     margin-top: 100px;
@@ -50,7 +57,6 @@ const ImgTitle = styled.p`
   color: white;
   border-bottom: 1px solid white;
   margin: 0 20px;
-  padding: 0;
   padding-bottom: 330px;
   @media screen and (min-width: 768px) {
     margin: 0 170px;
@@ -62,7 +68,6 @@ const ImgContent = styled.p`
   font: 500 13px "arial";
   color: white;
   margin: 0 20px;
-  padding: 0;
   padding-top: 10px;
   @media screen and (min-width: 768px) {
     margin-right: 170px;
@@ -111,10 +116,6 @@ const SubTitle = styled.p`
   font: bold 23px "arial";
   color: #2b2b2b;
   margin: 40px 0 5px 0;
-  padding: 0;
-  @media screen and (min-width: 768px) {
-    padding: 0;
-  }
 `;
 
 const SubContent = styled.p`
@@ -122,7 +123,6 @@ const SubContent = styled.p`
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin: 20px 0 50px 0;
-    padding: 0;
   }
 `;
 
@@ -137,20 +137,15 @@ const SubWrapper2 = styled.div`
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  @media screen and (min-width: 768px) {
-    border-bottom: none;
-  }
 `;
+
 const Button = styled.div`
   font: 500 20px "arial";
   color: #6c6b6b;
   width: 250px;
-  margin: 0;
-  padding: 0;
   margin-top: 40px;
   border-bottom: 1px solid gray;
   display: flex;
-  flex-direction: row;
   padding-bottom: 10px;
   &:hover {
     cursor: pointer;
@@ -159,8 +154,6 @@ const Button = styled.div`
 `;
 
 const Right = styled(FaChevronRight)`
-  margin: 0;
-  padding: 0;
   padding-top: 1px;
 `;
 
@@ -168,11 +161,6 @@ const SubTitle2 = styled.p`
   font: bold 23px "arial";
   color: #2b2b2b;
   margin: 40px 0 5px 0;
-  padding: 0;
-  @media screen and (min-width: 768px) {
-    padding: 0;
-    margin: 0;
-  }
 `;
 
 const SubContent2 = styled.p`
@@ -180,17 +168,12 @@ const SubContent2 = styled.p`
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin-top: 85px;
-    padding: 0;
   }
 `;
 
 const BannerWrapper = styled.div`
   width: 100%;
   height: 250px;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  overflow-x: hidden;
   margin-top: 50px;
   background: #e2e2e2;
 `;
@@ -199,14 +182,10 @@ const BannerTitle = styled.p`
   font: bold 30px "arial";
   color: black;
   border-bottom: 1px solid black;
-  margin: 0 20px;
-  padding: 0;
+  margin: 50px 20px 0 20px;
   padding-bottom: 10px;
-  margin-top: 50px;
   @media screen and (min-width: 768px) {
-    margin: 0 200px;
-    padding-bottom: 10px;
-    margin-top: 60px;
+    margin: 60px 200px 0 200px;
   }
 `;
 
@@ -214,7 +193,6 @@ const BannerContent = styled.p`
   font: 500 13px "arial";
   color: black;
   margin: 0 20px;
-  padding: 0;
   padding-top: 10px;
   @media screen and (min-width: 768px) {
     margin-right: 200px;
@@ -228,7 +206,6 @@ const BannerImgWrapper = styled.div`
   height: 500px;
   overflow-y: hidden;
   margin: 30px 0;
-  padding: 0;
   position: relative;
 `;
 
@@ -244,7 +221,6 @@ const BannerImgContent = styled.p`
   font: bold 40px "arial";
   text-align: center;
   margin: 0 30px;
-  padding: 0;
   top: 40%;
   @media screen and (min-width: 768px) {
     font: bold 50px "arial";
@@ -255,6 +231,23 @@ const BannerImgContent = styled.p`
 const Final = () => {
   const [inView, setInView] = useState({});
   const refs = useRef([]);
+  const [scrollY, setScrollY] = useState(0);
+  const [docHeight, setDocHeight] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    setDocHeight(document.body.scrollHeight - window.innerHeight);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const startY = docHeight * (2 / 3);
+  const gradientOpacity =
+    scrollY < startY
+      ? 0
+      : Math.min(((scrollY - startY) / (docHeight - startY)) * 0.8 + 0.2, 0.9); // 항상 최소 0.2 유지
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -284,6 +277,7 @@ const Final = () => {
 
   return (
     <>
+      <GradientOverlay opacity={gradientOpacity} />
       <ImgWrapper>
         <Img src={img} />
         <Comment>
@@ -350,13 +344,7 @@ const Final = () => {
         </SubContainer>
       </ContentWrapper>
       <BannerWrapper>
-        <BannerTitle>지켜봅니다. 건드릴 수 없습니다.</BannerTitle>
-        <BannerContent>
-          자동 잠금 시스템과 GPS 위치 지정 기능이 있어, 자전거를 어디에
-          주차했는지 다시는 걱정할 일이 없습니다. Quadstar는 또한 라이더가 없을
-          때 누군가 Quadstar를 이동시키려 할 때마다 즉시 경보를 울리도록
-          설계되었습니다.
-        </BannerContent>
+        <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
       </BannerWrapper>
       <ContentWrapper>
         <SubContainer>
@@ -379,7 +367,7 @@ const Final = () => {
             <SubTitle>항상 안전합니다</SubTitle>
             <SubContent>
               Quadstar는 휴대폰이 연결 범위를 벗어났음을 감지하면 자동으로
-              잠깁니다..
+              잠깁니다.
             </SubContent>
           </SubWrapper2>
         </SubContainer>
