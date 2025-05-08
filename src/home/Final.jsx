@@ -15,6 +15,19 @@ const slideUp = keyframes`
   }
 `;
 
+const GradientBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  opacity: ${({ opacity }) => opacity};
+  z-index: -1;
+  transition: opacity 0.2s ease;
+`;
+
 const ImgWrapper = styled.div`
   width: 100%;
   height: auto;
@@ -189,10 +202,10 @@ const BannerContent = styled.p`
 `;
 
 const BannerImgWrapper = styled.div`
-  width: 100%;
-  height: 500px;
+  width: 70%;
+  height: 300px;
   overflow-y: hidden;
-  margin: 30px 0;
+  margin: 30px auto;
   position: relative;
 `;
 
@@ -217,7 +230,22 @@ const BannerImgContent = styled.p`
 
 const Final = () => {
   const [inView, setInView] = useState({});
+  const [scrollY, setScrollY] = useState(0);
+  const [docHeight, setDocHeight] = useState(0);
   const refs = useRef([]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    setDocHeight(document.body.scrollHeight - window.innerHeight);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const startY = docHeight * (4 / 5);
+  const opacity =
+    scrollY < startY
+      ? 0
+      : Math.min(((scrollY - startY) / (docHeight - startY)) * 1, 1);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -235,18 +263,13 @@ const Final = () => {
       { threshold: 0.5 }
     );
 
-    refs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      if (refs.current)
-        refs.current.forEach((ref) => ref && observer.unobserve(ref));
-    };
+    refs.current.forEach((ref) => ref && observer.observe(ref));
+    return () => refs.current.forEach((ref) => ref && observer.unobserve(ref));
   }, []);
 
   return (
     <>
+      <GradientBackground opacity={opacity} />
       <ImgWrapper>
         <Img src={img} />
         <Comment>
@@ -258,60 +281,7 @@ const Final = () => {
           </ImgContent>
         </Comment>
       </ImgWrapper>
-      <ContentWrapper>
-        <SubContainer>
-          <SubWrapper
-            ref={(el) => (refs.current[0] = el)}
-            data-index={0}
-            inView={inView[0]}
-          >
-            <SubTitle>서라운드 조명등</SubTitle>
-            <SubContent>
-              전면, 후면, 측면 조명등이 다음 움직임을 주변 차량에 알려 야간에
-              안전성을 높여 줍니다.
-            </SubContent>
-            <SubImg src={img} />
-          </SubWrapper>
-          <SubWrapper
-            ref={(el) => (refs.current[1] = el)}
-            data-index={1}
-            inView={inView[1]}
-          >
-            <SubTitle>충돌 감지</SubTitle>
-            <SubContent>
-              센서가 다가오는 차나 기타 물체를 감지하고 라이더에게 경보를 울려
-              충돌을 방지합니다.
-            </SubContent>
-            <SubImg src={img} />
-          </SubWrapper>
-        </SubContainer>
-        <SubContainer>
-          <SubWrapper2
-            ref={(el) => (refs.current[2] = el)}
-            data-index={2}
-            inView={inView[2]}
-          >
-            <SubTitle2>
-              특허받은 배터리 기술로 가장 최적화되고 안정적인 라이딩을
-              구현합니다.
-            </SubTitle2>
-          </SubWrapper2>
-          <SubWrapper2
-            ref={(el) => (refs.current[3] = el)}
-            data-index={3}
-            inView={inView[3]}
-          >
-            <SubContent2>
-              Quadstar의 배터리는 충전 및 방전 보호, 최적의 전지 배열, 매우
-              안전한 설계로 인증받아 무결성과 안정성을 보장합니다.
-              <Button>
-                배터리 안전 보고서 읽어 보기
-                <Right />
-              </Button>
-            </SubContent2>
-          </SubWrapper2>
-        </SubContainer>
-      </ContentWrapper>
+      <ContentWrapper></ContentWrapper>
       <BannerWrapper>
         <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
       </BannerWrapper>
