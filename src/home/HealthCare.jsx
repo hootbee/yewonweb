@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// 이미지 배열로 관리
+import envImg1 from "../img/logo1.png";
+import envImg2 from "../img/logo1.png";
+import envImg3 from "../img/logo1.png";
+import envImg4 from "../img/logo1.png";
+import envImg5 from "../img/logo1.png";
+import envImg6 from "../img/logo1.png";
+
+const envImgs = [envImg1, envImg2, envImg3, envImg4, envImg5, envImg6];
+
 const ContentWrapper = styled.div`
   margin: 0 25px;
   @media screen and (min-width: 768px) {
@@ -67,23 +77,49 @@ const LayeredBox = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   padding: 20px;
   opacity: 1;
-  /* 박스는 항상 렌더링 상태로 유지되며 transform 애니메이션만 조절 */
+  overflow: hidden;
   transform: ${({ index, active }) =>
     active
       ? `translate(${index * 240}px, ${index * 30}px)`
       : `translate(0, 0)`};
   z-index: ${({ index }) => 10 - index};
   transition: transform 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const BoxImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.85;
+`;
+
+const BoxContent = styled.div`
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  width: 100%;
 `;
 
 const SubTitle = styled.p`
   font: bold 18px "arial";
   color: #2b2b2b;
-  margin: 10px 0;
+  margin: 10px 0 5px 0;
 `;
 
 const SubContent = styled.p`
   font: 500 13px "arial";
+  margin: 0;
 `;
 
 const SubContainer = styled.div`
@@ -170,13 +206,16 @@ const HealthCare = () => {
 
         <SubContainer>
           <LayeredBoxWrapper>
-            {[...Array(6)].map((_, idx) => (
+            {envImgs.map((img, idx) => (
               <LayeredBox key={idx} index={idx} active={expand}>
-                <SubTitle>환경 {idx + 1}</SubTitle>
-                <SubContent>
-                  지능형 차량 제어 상자에는 배터리 팩과 제어 상자를 비롯하여
-                  라이딩을 수월하게 해주는 모든 것이 들어 있습니다.
-                </SubContent>
+                <BoxImage src={img} alt={`환경 ${idx + 1}`} />
+                <BoxContent>
+                  <SubTitle>환경 {idx + 1}</SubTitle>
+                  <SubContent>
+                    지능형 차량 제어 상자에는 배터리 팩과 제어 상자를 비롯하여
+                    라이딩을 수월하게 해주는 모든 것이 들어 있습니다.
+                  </SubContent>
+                </BoxContent>
               </LayeredBox>
             ))}
           </LayeredBoxWrapper>

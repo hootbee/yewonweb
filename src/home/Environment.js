@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import envImg1 from "../img/logo1.png";
+import envImg2 from "../img/logo1.png";
+import envImg3 from "../img/logo1.png";
+import envImg4 from "../img/logo1.png";
+import envImg5 from "../img/logo1.png";
+import envImg6 from "../img/logo1.png";
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
@@ -50,36 +56,45 @@ const Content = styled.p`
 
 const LayeredBoxWrapper = styled.div`
   position: relative;
-  width: 720px;
-  height: 720px;
-  margin-left: 0;
+  width: 100%;
+  max-width: 1400px;
+  height: 800px;
 `;
 
 const LayeredBox = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 500x;
-  height: 500px;
+  width: 230px;
+  height: 230px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  opacity: ${({ active }) => (active ? 1 : 0)};
+  padding: 10px;
+  opacity: 1;
   transform: ${({ index, active }) =>
-    active ? `translate(${index * 30}px, ${index * 30}px)` : `translate(0, 0)`};
+    active
+      ? `translate(${index * 220}px, ${index * 20}px)`
+      : `translate(0, 0)`};
   z-index: ${({ index }) => 10 - index};
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 1s ease;
 `;
 
 const SubTitle = styled.p`
-  font: bold 18px "arial";
+  font: bold 16px "arial";
   color: #2b2b2b;
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
 const SubContent = styled.p`
-  font: 500 13px "arial";
+  font: 500 12px "arial";
+`;
+
+const SubImage = styled.img`
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 8px;
 `;
 
 const SubContainer = styled.div`
@@ -137,7 +152,9 @@ const LastContent = styled.p`
   }
 `;
 
-const Environment = () => {
+const images = [envImg1, envImg2, envImg3, envImg4, envImg5, envImg6];
+
+const HealthCare = () => {
   const [expand, setExpand] = useState(false);
 
   useEffect(() => {
@@ -166,8 +183,9 @@ const Environment = () => {
 
         <SubContainer>
           <LayeredBoxWrapper>
-            {[...Array(3)].map((_, idx) => (
+            {images.map((src, idx) => (
               <LayeredBox key={idx} index={idx} active={expand}>
+                <SubImage src={src} alt={`환경 ${idx + 1}`} />
                 <SubTitle>환경 {idx + 1}</SubTitle>
                 <SubContent>
                   지능형 차량 제어 상자에는 배터리 팩과 제어 상자를 비롯하여
@@ -199,4 +217,4 @@ const Environment = () => {
   );
 };
 
-export default Environment;
+export default HealthCare;
