@@ -153,7 +153,7 @@ const SubImg = styled.img`
   object-fit: cover;
 `;
 
-const Introduce = () => {
+const About = () => {
   const [inView, setInView] = useState({});
   const refs = useRef([]);
 
@@ -186,6 +186,7 @@ const Introduce = () => {
   return (
     <>
       <MainImgWrapper
+        id="about"
         ref={(el) => (refs.current[0] = el)}
         data-index={0}
         inView={inView[0]}
@@ -258,4 +259,4 @@ const Introduce = () => {
   );
 };
 
-export default Introduce;
+export default About;

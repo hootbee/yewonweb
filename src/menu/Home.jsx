@@ -3,13 +3,12 @@
 import React from "react";
 import Design from "../home/Design";
 import Final from "../home/Final";
-import Introduce from "../home/Introduce";
-import Convenience from "../home/Convenience";
+import About from "../home/About";
 
 const Home = () => {
   return (
     <>
-      <Introduce></Introduce>
+      <About></About>
       <Design></Design>
       <Final></Final>
     </>

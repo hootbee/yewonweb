@@ -30,20 +30,20 @@ const Hamburger = styled(GiHamburgerMenu)``;
 const Menu = () => {
   return (
     <MenuWrapper>
-      <a href="/about">
+      <a href="#about">
         <h5>ABOUT</h5>
       </a>
 
       <a href="#news">
-        <h5>NEWS</h5>
+        <h5>RESEARCH</h5>
       </a>
 
       <a href="/stores">
-        <h5>MEMBERS</h5>
+        <h5>AIRSTELLAR</h5>
       </a>
 
       <a href="/news">
-        <h5>RESEARCH</h5>
+        <h5>NLP</h5>
       </a>
 
       <a href="/support">
