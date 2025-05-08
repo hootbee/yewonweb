@@ -35,19 +35,19 @@ const Menu = () => {
       </a>
 
       <a href="#news">
-        <h5>RESEARCH</h5>
+        <h5>HEALTH CARE</h5>
       </a>
 
       <a href="/stores">
-        <h5>AIRSTELLAR</h5>
+        <h5>ENVIRONMENTAL</h5>
       </a>
 
       <a href="/news">
-        <h5>NLP</h5>
+        <h5>AIRSTELLAR</h5>
       </a>
 
       <a href="/support">
-        <h5>OPENINGS</h5>
+        <h5>NLP</h5>
       </a>
 
       <a href="#contact">
