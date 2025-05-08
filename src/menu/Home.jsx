@@ -1,15 +1,17 @@
 //src/menu/Home.jsx
 
 import React from "react";
-import Design from "../home/Design";
 import About from "../home/About";
 import Nlp from "../home/Nlp";
+import HealthCare from "../home/HealthCare";
+import Environment from "../home/Environment";
 
 const Home = () => {
   return (
     <>
       <About></About>
-      <Design></Design>
+      <HealthCare></HealthCare>
+      <Environment></Environment>
       <Nlp></Nlp>
     </>
   );
