@@ -273,7 +273,7 @@ const Nlp = () => {
       <ImgWrapper>
         <Img src={img} />
         <Comment>
-          <ImgTitle>첫째도 둘째도 안전.</ImgTitle>
+          <ImgTitle>NLP 컴포넌트 시작</ImgTitle>
           <ImgContent>
             이동 중에는 늘 우선순위이므로, Quadstar에 모든 최신 안전 기능을
             탑재했습니다. 다가오는 차량 감지부터 서라운드 조명등 시스템까지,

@@ -196,11 +196,8 @@ const HealthCare = () => {
       <ContentWrapper id="healthCare">
         <MainContainer>
           <MainAnimdation>
-            <MainTitle>문자 그대로 고정관념에서 벗어나세요.</MainTitle>
-            <Content>
-              뛰어난 창의력과 혁신적 상상력의 산물인 ebii는 가능성이 무한한,
-              세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로 제작되었습니다.
-            </Content>
+            <MainTitle>헬스케어 시작...</MainTitle>
+            <Content>헬스케어 쏼라쏼라...(삭제 or 유지?)</Content>
           </MainAnimdation>
         </MainContainer>
 
