@@ -183,7 +183,7 @@ const HealthCare = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const triggerPoint = document.body.scrollHeight * 0.2;
+      const triggerPoint = document.body.scrollHeight * 0.15;
       if (scrollY >= triggerPoint) setExpand(true);
     };
 
@@ -193,7 +193,7 @@ const HealthCare = () => {
 
   return (
     <>
-      <ContentWrapper id="news">
+      <ContentWrapper id="healthCare">
         <MainContainer>
           <MainAnimdation>
             <MainTitle>문자 그대로 고정관념에서 벗어나세요.</MainTitle>

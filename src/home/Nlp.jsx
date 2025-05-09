@@ -268,7 +268,7 @@ const Nlp = () => {
   }, []);
 
   return (
-    <>
+    <div id="nlp">
       <GradientBackground opacity={opacity} />
       <ImgWrapper>
         <Img src={img} />
@@ -315,7 +315,7 @@ const Nlp = () => {
         <BannerImg src={img2} />
         <BannerImgContent>세상을 보는 방식을 바꿔보세요.</BannerImgContent>
       </BannerImgWrapper>
-    </>
+    </div>
   );
 };
 

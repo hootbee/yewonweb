@@ -170,7 +170,7 @@ const HealthCare = () => {
 
   return (
     <>
-      <ContentWrapper id="news">
+      <ContentWrapper id="environment">
         <MainContainer>
           <MainAnimdation>
             <MainTitle>문자 그대로 고정관념에서 벗어나세요.</MainTitle>
