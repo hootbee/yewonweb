@@ -42,10 +42,6 @@ const Menu = () => {
         <h5>ENVIRONMENTAL</h5>
       </a>
 
-      <a href="/news">
-        <h5>AIRSTELLAR</h5>
-      </a>
-
       <a href="/support">
         <h5>NLP</h5>
       </a>
