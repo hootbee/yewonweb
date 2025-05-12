@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import img from "../img/mood.png";
 import img2 from "../img/explore.png";
-import { FaChevronRight } from "react-icons/fa";
 
 const slideUp = keyframes`
   0% {
@@ -35,54 +33,6 @@ const GradientBackground = styled.div`
   transition: opacity 0.2s ease;
 `;
 
-const ImgWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  margin-top: 100px;
-  position: relative;
-  overflow-x: hidden;
-`;
-
-const Img = styled.img`
-  width: 100%;
-  height: 500px;
-`;
-
-const Comment = styled.div`
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  margin-top: 50px;
-  @media screen and (min-width: 768px) {
-    margin-top: 100px;
-  }
-`;
-
-const ImgTitle = styled.p`
-  font: bold 30px "arial";
-  color: white;
-  border-bottom: 1px solid white;
-  margin: 0 20px;
-  padding-bottom: 330px;
-  @media screen and (min-width: 768px) {
-    margin: 0 170px;
-    padding-bottom: 10px;
-  }
-`;
-
-const ImgContent = styled.p`
-  font: 500 13px "arial";
-  color: white;
-  margin: 0 20px;
-  padding-top: 10px;
-  @media screen and (min-width: 768px) {
-    margin-right: 170px;
-    width: calc(30%);
-    float: right;
-  }
-`;
-
 const ContentWrapper = styled.div`
   margin: 0 25px;
   padding-top: 10px;
@@ -107,20 +57,6 @@ const SubContainer = styled.div`
   }
 `;
 
-const SubWrapper = styled.div`
-  animation: ${({ inView }) => (inView ? slideUp : "none")} 1s ease-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  border-bottom: 0.5px solid #8e8d8d;
-  @media screen and (min-width: 768px) {
-    border-bottom: none;
-    border-top: 0.5px solid #8e8d8d;
-    margin-top: 50px;
-  }
-`;
-
 const SubTitle = styled.p`
   font: bold 23px "arial";
   color: #2b2b2b;
@@ -135,49 +71,12 @@ const SubContent = styled.p`
   }
 `;
 
-const SubImg = styled.img`
-  width: 100%;
-  height: 300px;
-`;
-
 const SubWrapper2 = styled.div`
   animation: ${({ inView }) => (inView ? slideUp : "none")} 1s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
-`;
-
-const Button = styled.div`
-  font: 500 20px "arial";
-  color: #6c6b6b;
-  width: 250px;
-  margin-top: 40px;
-  border-bottom: 1px solid gray;
-  display: flex;
-  padding-bottom: 10px;
-  &:hover {
-    cursor: pointer;
-    color: gray;
-  }
-`;
-
-const Right = styled(FaChevronRight)`
-  padding-top: 1px;
-`;
-
-const SubTitle2 = styled.p`
-  font: bold 23px "arial";
-  color: #2b2b2b;
-  margin: 40px 0 5px 0;
-`;
-
-const SubContent2 = styled.p`
-  font: 500 13px "arial";
-  margin-bottom: 40px;
-  @media screen and (min-width: 768px) {
-    margin-top: 85px;
-  }
 `;
 
 const BannerWrapper = styled.div`
@@ -195,18 +94,6 @@ const BannerTitle = styled.p`
   padding-bottom: 10px;
   @media screen and (min-width: 768px) {
     margin: 60px 200px 0 200px;
-  }
-`;
-
-const BannerContent = styled.p`
-  font: 500 13px "arial";
-  color: black;
-  margin: 0 20px;
-  padding-top: 10px;
-  @media screen and (min-width: 768px) {
-    margin-right: 200px;
-    width: calc(30%);
-    float: right;
   }
 `;
 
