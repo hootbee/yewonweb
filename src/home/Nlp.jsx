@@ -13,6 +13,13 @@ const slideUp = keyframes`
   }
 `;
 
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+`;
+
 const GradientBackground = styled.div`
   position: fixed;
   top: 0;
@@ -20,41 +27,26 @@ const GradientBackground = styled.div`
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    /* 시작 완전 투명 */ rgba(0, 0, 0, 0.6) 15%,
-    /* 중간 밝기 */ rgba(0, 0, 0, 0.85) 30%,
-    /* 더 어두움 */ rgba(0, 0, 0, 1) 45%,
-    /* 진한 검정 시작 */ rgba(0, 0, 0, 1) 100% /* 완전한 검정 유지 */
-  );
-  opacity: ${({ opacity }) => opacity};
+  background: rgba(0, 0, 0, ${({ opacity }) => opacity});
   z-index: -1;
-  transition: opacity 0.2s ease;
+  transition: background 0.2s ease;
 `;
 
-const ContentWrapper = styled.div`
+const ContentRow = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 25px;
   padding-top: 10px;
+  gap: 20px;
   @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
     margin: 0 170px;
   }
 `;
 
-const SubContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 700px;
-  margin-top: -80px;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    & > div:nth-child(1) {
-      margin-right: 10px;
-    }
-    & > div:nth-child(2) {
-      margin-left: 10px;
-    }
-  }
+const ContentWrapper = styled.div`
+  flex: 1;
 `;
 
 const SubTitle = styled.p`
@@ -77,12 +69,12 @@ const SubWrapper2 = styled.div`
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  min-height: 100vh;
 `;
 
 const BannerWrapper = styled.div`
   width: 100%;
   height: 100px;
-  margin-top: -60px;
   background: #007bbf;
 `;
 
@@ -101,7 +93,7 @@ const BannerImgWrapper = styled.div`
   width: 70%;
   height: 300px;
   overflow-y: hidden;
-  margin: -40px auto 350px auto;
+  margin: 0 auto 350px auto;
   position: relative;
 `;
 
@@ -164,14 +156,17 @@ const Nlp = () => {
   }, []);
 
   return (
-    <div id="nlp">
+    <Wrapper id="nlp">
       <GradientBackground opacity={opacity} />
-      <ContentWrapper></ContentWrapper>
-      <BannerWrapper>
-        <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
-      </BannerWrapper>
+
       <ContentWrapper>
-        <SubContainer>
+        <BannerWrapper>
+          <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
+        </BannerWrapper>
+      </ContentWrapper>
+
+      <ContentRow>
+        <ContentWrapper>
           <SubWrapper2
             ref={(el) => (refs.current[4] = el)}
             data-index={4}
@@ -183,6 +178,9 @@ const Nlp = () => {
               지정은 어떤 상황에서든 Quadstar를 찾는 데 도움을 줍니다.
             </SubContent>
           </SubWrapper2>
+        </ContentWrapper>
+
+        <ContentWrapper>
           <SubWrapper2
             ref={(el) => (refs.current[5] = el)}
             data-index={5}
@@ -194,13 +192,14 @@ const Nlp = () => {
               잠깁니다.
             </SubContent>
           </SubWrapper2>
-        </SubContainer>
-      </ContentWrapper>
+        </ContentWrapper>
+      </ContentRow>
+
       <BannerImgWrapper>
         <BannerImg src={img2} />
         <BannerImgContent>세상을 보는 방식을 바꿔보세요.</BannerImgContent>
       </BannerImgWrapper>
-    </div>
+    </Wrapper>
   );
 };
 
