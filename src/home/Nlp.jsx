@@ -22,7 +22,15 @@ const GradientBackground = styled.div`
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+
+  /* 검정색 불투명 비율을 더 늘림 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 1) 85%
+  );
+
   opacity: ${({ opacity }) => opacity};
   z-index: -1;
   transition: opacity 0.2s ease;
@@ -87,6 +95,7 @@ const ContentWrapper = styled.div`
 const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 700px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     & > div:nth-child(1) {
@@ -173,9 +182,9 @@ const SubContent2 = styled.p`
 
 const BannerWrapper = styled.div`
   width: 100%;
-  height: 250px;
+  height: 100px;
   margin-top: 50px;
-  background: #e2e2e2;
+  background: #007bbf;
 `;
 
 const BannerTitle = styled.p`
@@ -270,17 +279,6 @@ const Nlp = () => {
   return (
     <div id="nlp">
       <GradientBackground opacity={opacity} />
-      <ImgWrapper>
-        <Img src={img} />
-        <Comment>
-          <ImgTitle>NLP 컴포넌트 시작</ImgTitle>
-          <ImgContent>
-            이동 중에는 늘 우선순위이므로, Quadstar에 모든 최신 안전 기능을
-            탑재했습니다. 다가오는 차량 감지부터 서라운드 조명등 시스템까지,
-            Quadstar는 보다 안전한 라이딩을 보장합니다.
-          </ImgContent>
-        </Comment>
-      </ImgWrapper>
       <ContentWrapper></ContentWrapper>
       <BannerWrapper>
         <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
