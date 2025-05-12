@@ -22,15 +22,14 @@ const GradientBackground = styled.div`
   width: 100%;
   height: 100vh;
   pointer-events: none;
-
-  /* 검정색 불투명 비율을 더 늘림 */
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 30%,
-    rgba(0, 0, 0, 0.7) 60%,
-    rgba(0, 0, 0, 1) 85%
+    rgba(0, 0, 0, 0) 0%,
+    /* 시작 완전 투명 */ rgba(0, 0, 0, 0.6) 15%,
+    /* 중간 밝기 */ rgba(0, 0, 0, 0.85) 30%,
+    /* 더 어두움 */ rgba(0, 0, 0, 1) 45%,
+    /* 진한 검정 시작 */ rgba(0, 0, 0, 1) 100% /* 완전한 검정 유지 */
   );
-
   opacity: ${({ opacity }) => opacity};
   z-index: -1;
   transition: opacity 0.2s ease;
@@ -86,7 +85,7 @@ const ImgContent = styled.p`
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
-  padding: 0;
+  padding-top: 10px;
   @media screen and (min-width: 768px) {
     margin: 0 170px;
   }
@@ -96,6 +95,7 @@ const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 700px;
+  margin-top: -80px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     & > div:nth-child(1) {
@@ -183,7 +183,7 @@ const SubContent2 = styled.p`
 const BannerWrapper = styled.div`
   width: 100%;
   height: 100px;
-  margin-top: 50px;
+  margin-top: -60px;
   background: #007bbf;
 `;
 
@@ -214,7 +214,7 @@ const BannerImgWrapper = styled.div`
   width: 70%;
   height: 300px;
   overflow-y: hidden;
-  margin: 30px auto;
+  margin: -40px auto 350px auto;
   position: relative;
 `;
 
