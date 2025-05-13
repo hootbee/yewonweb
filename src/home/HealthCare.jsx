@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-// 이미지 배열로 관리
 import envImg1 from "../img/logo1.png";
 import envImg2 from "../img/logo1.png";
 import envImg3 from "../img/logo1.png";
@@ -44,6 +43,7 @@ const envContents = [
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
+  overflow-x: hidden;
   @media screen and (min-width: 768px) {
     margin: 0 170px;
   }
@@ -92,41 +92,44 @@ const Content = styled.p`
 const LayeredBoxWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  height: 720px;
-  margin-left: 0;
+  height: clamp(300px, 60vw, 720px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 `;
 
 const LayeredBox = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 210px;
-  height: 210px;
+  width: 15vw;
+  max-width: 210px;
+  height: 15vw;
+  max-height: 210px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  opacity: 1;
+  padding: 10px;
   overflow: hidden;
-  transform: ${({ index, active }) =>
-    active
-      ? `translate(${index * 240}px, ${index * 30}px)`
-      : `translate(0, 0)`};
   z-index: ${({ index }) => 10 - index};
-  transition: transform 0.8s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  transition: all 0.8s ease;
+
+  transform: ${({ index, active }) =>
+    active
+      ? `translate(calc(${index * 1.1} * 12vw - 36vw), calc(${index} * 1.5vw))`
+      : "translate(0, 0)"};
 `;
 
 const BoxImage = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  width: 210px;
-  height: 210px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 1;
   opacity: 0.85;
@@ -160,7 +163,7 @@ const SubContainer = styled.div`
   gap: 60px;
   margin-top: 60px;
   @media screen and (min-width: 768px) {
-    justify-content: space-between;
+    justify-content: center;
   }
 `;
 
@@ -235,14 +238,14 @@ const HealthCare = () => {
         <SubContainer>
           <LayeredBoxWrapper>
             {envContents.map((item, idx) => (
-             <LayeredBox key={idx} index={idx} active={expand}>
-               <BoxImage src={item.img} alt={item.title} />
-               <BoxContent>
-                <SubTitle>{item.title}</SubTitle>
-               <SubContent>{item.content}</SubContent>
-              </BoxContent>
-             </LayeredBox>
-          ))}
+              <LayeredBox key={idx} index={idx} active={expand}>
+                <BoxImage src={item.img} alt={item.title} />
+                <BoxContent>
+                  <SubTitle>{item.title}</SubTitle>
+                  <SubContent>{item.content}</SubContent>
+                </BoxContent>
+              </LayeredBox>
+            ))}
           </LayeredBoxWrapper>
         </SubContainer>
       </ContentWrapper>
