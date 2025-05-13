@@ -28,12 +28,12 @@ const MainImgWrapper = styled.div`
   width: 100%;
   height: 500px;
   overflow-y: hidden;
-  margin: 30px 0 0 0;
+  margin: 0;
   padding: 0;
   position: relative;
   animation: ${({ inView }) => (inView ? growShrink : "none")} 1s ease-out;
   @media screen and (min-width: 768px) {
-    margin-top: 100px;
+    margin: 0;
     height: 700px;
   }
 `;
@@ -192,7 +192,7 @@ const About = () => {
         inView={inView[0]}
       >
         <Img src={img1} />
-        <MainImgContent>권예원이 점령했다</MainImgContent>
+        <MainImgContent>APPLIED AI와 함께</MainImgContent>
       </MainImgWrapper>
       <MainWrapper>
         <MainTitle>편의성이 열쇠입니다</MainTitle>

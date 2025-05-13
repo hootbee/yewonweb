@@ -69,9 +69,11 @@ const MainAnimdation = styled.div`
 `;
 
 const MainTitle = styled.p`
-  font: 400 35px "arial";
+  font: 400 50px "sans-serif";
+  font-weight: bold;
   color: #2b2b2b;
-  margin: 60px 0 30px 0;
+  margin: 60px 0 10px 0;
+  white-space: nowrap;
   @media screen and (min-width: 768px) {
     margin: 150px 0;
     flex: 1;
@@ -80,7 +82,7 @@ const MainTitle = styled.p`
 
 const Content = styled.p`
   font: 500 13px "arial";
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     flex: 1;
     margin: 0;
@@ -161,7 +163,7 @@ const SubContainer = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 60px;
-  margin-top: 60px;
+  margin-top: 0;
   @media screen and (min-width: 768px) {
     justify-content: center;
   }
