@@ -152,7 +152,38 @@ const LastContent = styled.p`
   }
 `;
 
-const images = [envImg1, envImg2, envImg3, envImg4, envImg5, envImg6];
+const envContents = [
+  {
+    img: envImg1,
+    title: "스마트 제어 시스템",
+    content: "배터리 팩과 제어 상자를 포함한 통합형 제어 박스.",
+  },
+  {
+    img: envImg2,
+    title: "지능형 라이딩 보조",
+    content: "AI 기반의 라이딩 모드 전환 및 최적화된 경로 지원.",
+  },
+  {
+    img: envImg3,
+    title: "친환경 배터리 팩",
+    content: "재활용이 가능한 고효율 리튬 배터리 팩 탑재.",
+  },
+  {
+    img: envImg4,
+    title: "모듈형 프레임 디자인",
+    content: "다양한 환경에 맞춘 프레임 확장 및 교체 가능.",
+  },
+  {
+    img: envImg5,
+    title: "스마트 락 시스템",
+    content: "앱 기반 자동 잠금 및 위치 추적 기능 제공.",
+  },
+  {
+    img: envImg6,
+    title: "주행 데이터 시각화",
+    content: "모바일 앱에서 실시간 라이딩 데이터 확인 가능.",
+  },
+];
 
 const HealthCare = () => {
   const [expand, setExpand] = useState(false);
@@ -173,7 +204,7 @@ const HealthCare = () => {
       <ContentWrapper id="environment">
         <MainContainer>
           <MainAnimdation>
-            <MainTitle>문자 그대로 고정관념에서 벗어나세요.</MainTitle>
+            <MainTitle>ENVIRONMENT.</MainTitle>
             <Content>
               뛰어난 창의력과 혁신적 상상력의 산물인 ebii는 가능성이 무한한,
               세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로 제작되었습니다.
@@ -183,26 +214,14 @@ const HealthCare = () => {
 
         <SubContainer>
           <LayeredBoxWrapper>
-            {images.map((src, idx) => (
+            {envContents.map((item, idx) => (
               <LayeredBox key={idx} index={idx} active={expand}>
-                <SubImage src={src} alt={`환경 ${idx + 1}`} />
-                <SubTitle>환경 {idx + 1}</SubTitle>
-                <SubContent>
-                  지능형 차량 제어 상자에는 배터리 팩과 제어 상자를 비롯하여
-                  라이딩을 수월하게 해주는 모든 것이 들어 있습니다.
-                </SubContent>
-              </LayeredBox>
-            ))}
+                <SubImage src={item.img} alt={item.title} />
+                <SubTitle>{item.title}</SubTitle>
+                <SubContent>{item.content}</SubContent>
+          </LayeredBox>
+        ))}
           </LayeredBoxWrapper>
-        </SubContainer>
-
-        <SubContainer>
-          <SubWrapper2>
-            <SubContent2>
-              어디든 가야 할 곳으로 데려가도록 설계된 ebii의 경량 폼 팩터가 도시
-              이동을 식은 죽 먹기로 만듭니다.
-            </SubContent2>
-          </SubWrapper2>
         </SubContainer>
       </ContentWrapper>
 

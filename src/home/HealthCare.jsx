@@ -9,7 +9,38 @@ import envImg4 from "../img/logo1.png";
 import envImg5 from "../img/logo1.png";
 import envImg6 from "../img/logo1.png";
 
-const envImgs = [envImg1, envImg2, envImg3, envImg4, envImg5, envImg6];
+const envContents = [
+  {
+    img: envImg1,
+    title: "스마트 제어 모듈",
+    content: "배터리 팩과 제어 상자를 탑재한 스마트 제어 모듈입니다.",
+  },
+  {
+    img: envImg2,
+    title: "실시간 건강 모니터링",
+    content: "건강 데이터를 실시간으로 수집하고 이상 징후를 감지합니다.",
+  },
+  {
+    img: envImg3,
+    title: "웨어러블 센서",
+    content: "웨어러블 기기를 통해 맞춤형 헬스 데이터를 수집합니다.",
+  },
+  {
+    img: envImg4,
+    title: "AI 진단 시스템",
+    content: "AI 진단 알고리즘으로 조기 진단 및 예방이 가능합니다.",
+  },
+  {
+    img: envImg5,
+    title: "모바일 연동 서비스",
+    content: "모바일 앱과 연동된 실시간 건강 리포트 기능을 제공합니다.",
+  },
+  {
+    img: envImg6,
+    title: "응급 대응 시스템",
+    content: "응급 상황 발생 시 의료진에게 자동 알림을 전송합니다.",
+  },
+];
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
@@ -196,45 +227,25 @@ const HealthCare = () => {
       <ContentWrapper id="healthCare">
         <MainContainer>
           <MainAnimdation>
-            <MainTitle>헬스케어 시작...</MainTitle>
+            <MainTitle>HEALTH CARE.</MainTitle>
             <Content>헬스케어 쏼라쏼라...(삭제 or 유지?)</Content>
           </MainAnimdation>
         </MainContainer>
 
         <SubContainer>
           <LayeredBoxWrapper>
-            {envImgs.map((img, idx) => (
-              <LayeredBox key={idx} index={idx} active={expand}>
-                <BoxImage src={img} alt={`환경 ${idx + 1}`} />
-                <BoxContent>
-                  <SubTitle>환경 {idx + 1}</SubTitle>
-                  <SubContent>
-                    지능형 차량 제어 상자에는 배터리 팩과 제어 상자를 비롯하여
-                    라이딩을 수월하게 해주는 모든 것이 들어 있습니다.
-                  </SubContent>
-                </BoxContent>
-              </LayeredBox>
-            ))}
+            {envContents.map((item, idx) => (
+             <LayeredBox key={idx} index={idx} active={expand}>
+               <BoxImage src={item.img} alt={item.title} />
+               <BoxContent>
+                <SubTitle>{item.title}</SubTitle>
+               <SubContent>{item.content}</SubContent>
+              </BoxContent>
+             </LayeredBox>
+          ))}
           </LayeredBoxWrapper>
         </SubContainer>
-
-        <SubContainer>
-          <SubWrapper2>
-            <SubContent2>
-              어디든 가야 할 곳으로 데려가도록 설계된 ebii의 경량 폼 팩터가 도시
-              이동을 식은 죽 먹기로 만듭니다.
-            </SubContent2>
-          </SubWrapper2>
-        </SubContainer>
       </ContentWrapper>
-
-      <LastContainer>
-        <LastWrapper>
-          <LastContent>
-            모든 라이딩을 진정으로 나만의 것으로 만드는 스마트 기능.
-          </LastContent>
-        </LastWrapper>
-      </LastContainer>
     </>
   );
 };

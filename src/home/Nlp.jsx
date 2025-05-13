@@ -164,7 +164,7 @@ const Nlp = () => {
           <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
         </BannerWrapper>
       </ContentWrapper>
-
+      
       <ContentRow>
         <ContentWrapper>
           <SubWrapper2
@@ -199,6 +199,7 @@ const Nlp = () => {
         <BannerImg src={img2} />
         <BannerImgContent>세상을 보는 방식을 바꿔보세요.</BannerImgContent>
       </BannerImgWrapper>
+      */
     </Wrapper>
   );
 };

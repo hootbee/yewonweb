@@ -192,7 +192,7 @@ const About = () => {
         inView={inView[0]}
       >
         <Img src={img1} />
-        <MainImgContent>Applied AI is good</MainImgContent>
+        <MainImgContent>권예원이 점령했다</MainImgContent>
       </MainImgWrapper>
       <MainWrapper>
         <MainTitle>편의성이 열쇠입니다</MainTitle>
