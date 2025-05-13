@@ -43,7 +43,6 @@ const envContents = [
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
-  overflow-x: hidden;
   @media screen and (min-width: 768px) {
     margin: 0 170px;
   }
@@ -118,9 +117,10 @@ const LayeredBox = styled.div`
   justify-content: flex-end;
   transition: all 0.8s ease;
 
+  left: 0;
   transform: ${({ index, active }) =>
     active
-      ? `translate(calc(${index * 1.1} * 12vw - 36vw), calc(${index} * 1.5vw))`
+      ? `translate(calc(${index * 1.0} * 13vw), calc(${index} * 1.5vw))`
       : "translate(0, 0)"};
 `;
 
