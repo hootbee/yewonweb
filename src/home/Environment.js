@@ -210,7 +210,8 @@ const Environment = () => {
             <MainTitle>ENVIRONMENT.</MainTitle>
             <Content>
               뛰어난 창의력과 혁신적 상상력의 산물인 ebii는 가능성이 무한한,
-              세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로 제작되었습니다.
+              세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로
+              제작되었습니다.(헬스케어 완성하면 복붙하겠음)
             </Content>
           </MainAnimdation>
         </MainContainer>
