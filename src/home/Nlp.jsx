@@ -46,6 +46,7 @@ const ContentRow = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  margin-bottom: 200px;
   flex: 1;
 `;
 
