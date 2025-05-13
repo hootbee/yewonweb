@@ -35,9 +35,11 @@ const MainAnimdation = styled.div`
 `;
 
 const MainTitle = styled.p`
-  font: 400 35px "arial";
+  font: 400 50px "sans-serif";
+  font-weight: bold;
   color: #2b2b2b;
   margin: 60px 0 30px 0;
+  white-space: nowrap;
   @media screen and (min-width: 768px) {
     margin: 150px 0;
     flex: 1;
