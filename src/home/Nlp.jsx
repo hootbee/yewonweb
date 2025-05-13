@@ -158,48 +158,15 @@ const Nlp = () => {
   return (
     <Wrapper id="nlp">
       <GradientBackground opacity={opacity} />
-
       <ContentWrapper>
         <BannerWrapper>
           <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
         </BannerWrapper>
       </ContentWrapper>
-      
-      <ContentRow>
-        <ContentWrapper>
-          <SubWrapper2
-            ref={(el) => (refs.current[4] = el)}
-            data-index={4}
-            inView={inView[4]}
-          >
-            <SubTitle>잃어버릴 일이 없습니다.</SubTitle>
-            <SubContent>
-              자전거 도난 가능성이 감지되면 즉시 알림을 받습니다. GPS 위치
-              지정은 어떤 상황에서든 Quadstar를 찾는 데 도움을 줍니다.
-            </SubContent>
-          </SubWrapper2>
-        </ContentWrapper>
-
-        <ContentWrapper>
-          <SubWrapper2
-            ref={(el) => (refs.current[5] = el)}
-            data-index={5}
-            inView={inView[5]}
-          >
-            <SubTitle>항상 안전합니다</SubTitle>
-            <SubContent>
-              Quadstar는 휴대폰이 연결 범위를 벗어났음을 감지하면 자동으로
-              잠깁니다.
-            </SubContent>
-          </SubWrapper2>
-        </ContentWrapper>
-      </ContentRow>
-
       <BannerImgWrapper>
         <BannerImg src={img2} />
         <BannerImgContent>세상을 보는 방식을 바꿔보세요.</BannerImgContent>
       </BannerImgWrapper>
-      */
     </Wrapper>
   );
 };
