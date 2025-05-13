@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import img2 from "../img/explore.png";
+import img2 from "../img/nlp.png";
 
+// 애니메이션 정의
 const slideUp = keyframes`
   0% {
     transform: translateY(30%);
@@ -13,6 +14,7 @@ const slideUp = keyframes`
   }
 `;
 
+// 전체 래퍼
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -20,6 +22,7 @@ const Wrapper = styled.div`
   overflow-x: hidden;
 `;
 
+// 스크롤 시 배경 어두워지는 효과
 const GradientBackground = styled.div`
   position: fixed;
   top: 0;
@@ -32,78 +35,47 @@ const GradientBackground = styled.div`
   transition: background 0.2s ease;
 `;
 
-const ContentRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 25px;
-  padding-top: 10px;
-  gap: 20px;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 170px;
-  }
-`;
-
 const ContentWrapper = styled.div`
   margin-bottom: 200px;
   flex: 1;
 `;
 
-const SubTitle = styled.p`
-  font: bold 23px "arial";
-  color: #2b2b2b;
-  margin: 40px 0 5px 0;
-`;
-
-const SubContent = styled.p`
-  font: 500 13px "arial";
-  margin-bottom: 40px;
-  @media screen and (min-width: 768px) {
-    margin: 20px 0 50px 0;
-  }
-`;
-
-const SubWrapper2 = styled.div`
-  animation: ${({ inView }) => (inView ? slideUp : "none")} 1s ease-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  min-height: 100vh;
-`;
-
 const BannerWrapper = styled.div`
   width: 100%;
   height: 100px;
-  background: #007bbf;
+  background: transparent;
 `;
 
 const BannerTitle = styled.p`
-  font: bold 30px "arial";
+  font: bold 60px "arial";
   color: black;
-  border-bottom: 1px solid black;
+  text-align: center;
   margin: 50px 20px 0 20px;
   padding-bottom: 10px;
+
   @media screen and (min-width: 768px) {
     margin: 60px 200px 0 200px;
   }
 `;
 
+// ✅ 이미지 중앙 정렬 핵심 부분
 const BannerImgWrapper = styled.div`
-  width: 70%;
-  height: 300px;
-  overflow-y: hidden;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto 350px auto;
-  position: relative;
 `;
 
 const BannerImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 30%;
+  max-width: 70%;
+  height: auto;
+  object-fit: contain;
 `;
 
+// 필요 시 텍스트 겹치게 쓰고 싶을 때 사용
 const BannerImgContent = styled.p`
   position: absolute;
   color: white;
@@ -111,6 +83,7 @@ const BannerImgContent = styled.p`
   text-align: center;
   margin: 0 30px;
   top: 40%;
+
   @media screen and (min-width: 768px) {
     font: bold 50px "arial";
     margin-left: 100px;
@@ -165,8 +138,7 @@ const Nlp = () => {
         </BannerWrapper>
       </ContentWrapper>
       <BannerImgWrapper>
-        <BannerImg src={img2} />
-        <BannerImgContent>세상을 보는 방식을 바꿔보세요.</BannerImgContent>
+        <BannerImg src={img2} alt="Applied AI 이미지" />
       </BannerImgWrapper>
     </Wrapper>
   );

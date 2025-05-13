@@ -11,7 +11,7 @@ const HeaderWrapper = styled.div`
   left: 0;
   z-index: 1000; /* 다른 요소보다 위에 표시 */
   width: 100%;
-  height: 60px;
+  height: 70px;
   background: white;
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,7 @@ const Logo = styled.img`
   margin: 0;
   margin-left: 20px;
   height: 60px;
-  width: 80px;
+  width: 100px;
   margin-top: 5px;
 `;
 
