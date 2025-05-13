@@ -1,11 +1,46 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+// 이미지 배열로 관리
 import envImg1 from "../img/logo1.png";
 import envImg2 from "../img/logo1.png";
 import envImg3 from "../img/logo1.png";
 import envImg4 from "../img/logo1.png";
 import envImg5 from "../img/logo1.png";
 import envImg6 from "../img/logo1.png";
+
+const envContents = [
+  {
+    img: envImg1,
+    title: "스마트 제어 시스템",
+    content: "배터리 팩과 제어 상자를 포함한 통합형 제어 박스",
+  },
+  {
+    img: envImg2,
+    title: "지능형 라이딩 보조",
+    content: "건강 데이터를 실시간으로 수집하고 이상 징후를 감지합니다.",
+  },
+  {
+    img: envImg3,
+    title: "웨어러블 센서",
+    content: "웨어러블 기기를 통해 맞춤형 헬스 데이터를 수집합니다.",
+  },
+  {
+    img: envImg4,
+    title: "AI 진단 시스템",
+    content: "AI 진단 알고리즘으로 조기 진단 및 예방이 가능합니다.",
+  },
+  {
+    img: envImg5,
+    title: "모바일 연동 서비스",
+    content: "모바일 앱과 연동된 실시간 건강 리포트 기능을 제공합니다.",
+  },
+  {
+    img: envImg6,
+    title: "응급 대응 시스템",
+    content: "응급 상황 발생 시 의료진에게 자동 알림을 전송합니다.",
+  },
+];
 
 const ContentWrapper = styled.div`
   margin: 0 25px;
@@ -18,7 +53,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 0.5px solid #8e8d8d;
-  margin-bottom: -150px;
+  margin-bottom: -100px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     border: none;
@@ -39,7 +74,7 @@ const MainTitle = styled.p`
   font: 400 50px "sans-serif";
   font-weight: bold;
   color: #2b2b2b;
-  margin: 60px 0 30px 0;
+  margin: 60px 0 10px 0;
   white-space: nowrap;
   @media screen and (min-width: 768px) {
     margin: 150px 0;
@@ -49,7 +84,7 @@ const MainTitle = styled.p`
 
 const Content = styled.p`
   font: 500 13px "arial";
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     flex: 1;
     margin: 0;
@@ -60,44 +95,65 @@ const Content = styled.p`
 const LayeredBoxWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 1400px;
-  height: 800px;
+  max-width: 1000px;
+  height: 720px;
+  margin-left: 0;
 `;
 
 const LayeredBox = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 230px;
-  height: 230px;
+  width: 210px;
+  height: 210px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 10px;
+  padding: 20px;
   opacity: 1;
+  overflow: hidden;
   transform: ${({ index, active }) =>
     active
-      ? `translate(${index * 220}px, ${index * 20}px)`
+      ? `translate(${index * 240}px, ${index * 30}px)`
       : `translate(0, 0)`};
   z-index: ${({ index }) => 10 - index};
-  transition: transform 1s ease;
+  transition: transform 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const BoxImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.85;
+`;
+
+const BoxContent = styled.div`
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  width: 100%;
 `;
 
 const SubTitle = styled.p`
-  font: bold 16px "arial";
+  font: bold 18px "arial";
   color: #2b2b2b;
-  margin: 5px 0;
+  margin: 10px 0 5px 0;
 `;
 
 const SubContent = styled.p`
-  font: 500 12px "arial";
-`;
-
-const SubImage = styled.img`
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  margin-bottom: 8px;
+  font: 500 13px "arial";
+  margin: 0;
 `;
 
 const SubContainer = styled.div`
@@ -105,7 +161,7 @@ const SubContainer = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 60px;
-  margin-top: 60px;
+  margin-top: 0;
   @media screen and (min-width: 768px) {
     justify-content: space-between;
   }
@@ -155,46 +211,13 @@ const LastContent = styled.p`
   }
 `;
 
-const envContents = [
-  {
-    img: envImg1,
-    title: "스마트 제어 시스템",
-    content: "배터리 팩과 제어 상자를 포함한 통합형 제어 박스.",
-  },
-  {
-    img: envImg2,
-    title: "지능형 라이딩 보조",
-    content: "AI 기반의 라이딩 모드 전환 및 최적화된 경로 지원.",
-  },
-  {
-    img: envImg3,
-    title: "친환경 배터리 팩",
-    content: "재활용이 가능한 고효율 리튬 배터리 팩 탑재.",
-  },
-  {
-    img: envImg4,
-    title: "모듈형 프레임 디자인",
-    content: "다양한 환경에 맞춘 프레임 확장 및 교체 가능.",
-  },
-  {
-    img: envImg5,
-    title: "스마트 락 시스템",
-    content: "앱 기반 자동 잠금 및 위치 추적 기능 제공.",
-  },
-  {
-    img: envImg6,
-    title: "주행 데이터 시각화",
-    content: "모바일 앱에서 실시간 라이딩 데이터 확인 가능.",
-  },
-];
-
 const Environment = () => {
   const [expand, setExpand] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const triggerPoint = document.body.scrollHeight * 0.2;
+      const triggerPoint = document.body.scrollHeight * 0.15;
       if (scrollY >= triggerPoint) setExpand(true);
     };
 
@@ -210,8 +233,7 @@ const Environment = () => {
             <MainTitle>ENVIRONMENT.</MainTitle>
             <Content>
               뛰어난 창의력과 혁신적 상상력의 산물인 ebii는 가능성이 무한한,
-              세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로
-              제작되었습니다.(헬스케어 완성하면 복붙하겠음)
+              세계 최고의 모듈식 전기 자전거 아키텍처를 기반으로 제작되었습니다.
             </Content>
           </MainAnimdation>
         </MainContainer>
@@ -220,22 +242,16 @@ const Environment = () => {
           <LayeredBoxWrapper>
             {envContents.map((item, idx) => (
               <LayeredBox key={idx} index={idx} active={expand}>
-                <SubImage src={item.img} alt={item.title} />
-                <SubTitle>{item.title}</SubTitle>
-                <SubContent>{item.content}</SubContent>
+                <BoxImage src={item.img} alt={item.title} />
+                <BoxContent>
+                  <SubTitle>{item.title}</SubTitle>
+                  <SubContent>{item.content}</SubContent>
+                </BoxContent>
               </LayeredBox>
             ))}
           </LayeredBoxWrapper>
         </SubContainer>
       </ContentWrapper>
-
-      <LastContainer>
-        <LastWrapper>
-          <LastContent>
-            모든 라이딩을 진정으로 나만의 것으로 만드는 스마트 기능.
-          </LastContent>
-        </LastWrapper>
-      </LastContainer>
     </>
   );
 };
