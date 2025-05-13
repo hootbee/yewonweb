@@ -43,9 +43,9 @@ const envContents = [
 ];
 
 const ContentWrapper = styled.div`
-  margin: 0 25px;
+  margin: -40px 25px 0 25px; // 상단 여백만 줄이기
   @media screen and (min-width: 768px) {
-    margin: 0 170px;
+    margin: -60px 170px 0 170px; // 태블릿 이상일 때도 동일
   }
 `;
 
@@ -53,7 +53,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 0.5px solid #8e8d8d;
-  margin-bottom: -100px;
+  margin-bottom: -40px; // 너무 과하지 않게 음수 여백
   @media screen and (min-width: 768px) {
     flex-direction: row;
     border: none;
