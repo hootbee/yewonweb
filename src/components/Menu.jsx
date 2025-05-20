@@ -39,7 +39,7 @@ const Menu = () => {
       </a>
 
       <a href="#environment">
-        <h5>ENVIRONMENT</h5>
+        <h5>MEDICAL AI</h5>
       </a>
 
       <a href="#nlp">
