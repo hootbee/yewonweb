@@ -5,8 +5,7 @@ import About from "../home/About";
 import Nlp from "../home/Nlp";
 import HealthCare from "../home/HealthCare";
 import Environment from "../home/Environment";
-import News from "../components/News";
-
+import News from "../home/News";
 const Home = () => {
   return (
     <>

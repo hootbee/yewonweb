@@ -89,7 +89,7 @@ const News = () => {
   const [info, setInfo] = useState(true);
 
   return (
-    <Container>
+    <Container id="news">
       <ButtonWrapper>
         <Button onClick={() => setInfo(true)} active={info}>
           뉴스
