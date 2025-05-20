@@ -35,11 +35,11 @@ const Menu = () => {
       </a>
 
       <a href="#healthCare">
-        <h5>HEALTH CARE</h5>
+        <h5>MEDICAL AI</h5>
       </a>
 
       <a href="#environment">
-        <h5>MEDICAL AI</h5>
+        <h5>ENVIRONMENT</h5>
       </a>
 
       <a href="#nlp">

@@ -1,0 +1,60 @@
+.rep-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 40px;
+  flex-wrap: wrap; /* 반응형 처리용 */
+    /* ✅ 중앙 정렬 + 최대 너비 제한 추가 */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rep-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.rep-photo {
+  flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rep-photo img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.rep-name {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rep-role {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.rep-info {
+  margin-top: 20px;
+}
+
+.rep-section {
+  margin-bottom: 20px;
+}
+
+.rep-section h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #444;
+}
+
+.rep-section ul {
+  padding-left: 20px;
+}

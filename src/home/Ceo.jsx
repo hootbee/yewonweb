@@ -6,8 +6,8 @@ const RepresentativeIntro = () => {
   return (
     <div className="rep-container">
       <div className="rep-content">
-        <h3 className="rep-role">대표이사 / 교수</h3>
-        <h1 className="rep-name">[조재혁 교수님]</h1>
+        <h3 className="rep-role">대표이사</h3>
+        <h1 className="rep-name">조재혁</h1>
 
         <div className="rep-info">
           <div className="rep-section">
