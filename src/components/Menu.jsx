@@ -50,8 +50,8 @@ const Menu = () => {
         <h5>CEO</h5>
       </a>
 
-      <a href="#article">
-        <h5>ARTICLE</h5>
+      <a href="#news">
+        <h5>NEWS</h5>
       </a>
 
       <a href="#contact">

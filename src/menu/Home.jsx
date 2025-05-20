@@ -5,6 +5,7 @@ import About from "../home/About";
 import Nlp from "../home/Nlp";
 import HealthCare from "../home/HealthCare";
 import Environment from "../home/Environment";
+import News from "../components/News";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <HealthCare></HealthCare>
       <Environment></Environment>
       <Nlp></Nlp>
+      <News></News>
     </>
   );
 };
