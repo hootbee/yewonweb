@@ -6,8 +6,6 @@ import envImg1 from "../img/logo1.png";
 import envImg2 from "../img/logo1.png";
 import envImg3 from "../img/logo1.png";
 import envImg4 from "../img/logo1.png";
-import envImg5 from "../img/logo1.png";
-import envImg6 from "../img/logo1.png";
 
 const envContents = [
   {
@@ -29,16 +27,6 @@ const envContents = [
     img: envImg4,
     title: "AI 진단 시스템",
     content: "AI 진단 알고리즘으로 조기 진단 및 예방이 가능합니다.",
-  },
-  {
-    img: envImg5,
-    title: "모바일 연동 서비스",
-    content: "모바일 앱과 연동된 실시간 건강 리포트 기능을 제공합니다.",
-  },
-  {
-    img: envImg6,
-    title: "응급 대응 시스템",
-    content: "응급 상황 발생 시 의료진에게 자동 알림을 전송합니다.",
   },
 ];
 
