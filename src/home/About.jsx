@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import img1 from "../img/mood.png";
+import img1 from "../img/connact.png";
 
 const growShrink = keyframes`
   0% {
@@ -194,14 +194,14 @@ const About = () => {
         <Img src={img1} />
         <MainImgContent>HUMAN AI PLUS와 함께</MainImgContent>
       </MainImgWrapper>
-      <MainWrapper>
+      {/* <MainWrapper>
         <MainTitle>편의성이 열쇠입니다</MainTitle>
         <MainContent>
           일상적인 출퇴근을 용이하게 하고자, 편의성을 염두에 두고 ebii를
           설계했습니다. 펑크 방지 타이어, 자동 잠금 시스템, 고속 충전 배터리 등,
           Quadstar가 생활 편의성을 높여 줍니다.
         </MainContent>
-      </MainWrapper>
+      </MainWrapper>*/}
       {/* <SubContainer>
         <SubWrapper3>
           <SubWrapper2>
