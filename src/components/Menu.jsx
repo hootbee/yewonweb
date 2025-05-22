@@ -34,7 +34,7 @@ const Menu = () => {
         <h5>ABOUT</h5>
       </a>
 
-      <a href="#healthCare">
+      <a href="#research">
         <h5>RESEARCH</h5>
       </a>
 
