@@ -90,7 +90,9 @@ const Card = styled.div`
   transform: translateY(${(props) => (props.index % 2 === 0 ? "0px" : "30px")});
 
   &:hover {
-    transform: translateY(${(props) => (props.index % 2 === 0 ? "-8px" : "22px")});
+    transform: translateY(
+      ${(props) => (props.index % 2 === 0 ? "-8px" : "22px")}
+    );
   }
 `;
 
@@ -112,7 +114,7 @@ const CardText = styled.div`
 
 const MedicalAi = () => {
   return (
-    <Container>
+    <Container id="healthCare">
       <LeftSection>
         <Title>Medical AI Innovation</Title>
         <SubTitle>의료 현장을 혁신하는 인공지능 솔루션</SubTitle>
