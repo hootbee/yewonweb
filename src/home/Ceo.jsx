@@ -9,7 +9,7 @@ const Container = styled.div`
   align-items: flex-center;
   justify-content: center;
   padding: 50px 20px;
-  background-color: #f9fafc; /* ✅ 부드러운 배경색 */
+  background-color: #f9fafc; 
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -80,7 +80,7 @@ const RepresentativeIntro = () => {
         <Name>조재혁</Name>
 
         <InfoSection>
-          <h4>경 력</h4>
+          <h4>경 력 | </h4>
           <ul>
             <li>전북대학교 소프트웨어공학과 교수 (2022~)</li>
             <li>숭실대학교 AI데이터연구센터장 (2019~2022)</li>
@@ -90,7 +90,7 @@ const RepresentativeIntro = () => {
         </InfoSection>
 
         <InfoSection>
-          <h4>주요 활동</h4>
+          <h4>주요 활동 | </h4>
           <ul>
             <li>보건복지부 GFID 위원장</li>
             <li>산업부 AI 반도체·센서 R&D 위원장</li>

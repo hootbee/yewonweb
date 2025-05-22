@@ -41,7 +41,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 0.5px solid #8e8d8d;
-  margin-bottom: -100px;
+  margin-bottom: -40px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     border: none;

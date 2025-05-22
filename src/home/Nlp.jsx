@@ -134,7 +134,7 @@ const Nlp = () => {
       <GradientBackground opacity={opacity} />
       <ContentWrapper>
         <BannerWrapper>
-          <BannerTitle>applied AI의 압도적인 기술!</BannerTitle>
+          <BannerTitle>Applied AI의 압도적인 기술!</BannerTitle>
         </BannerWrapper>
       </ContentWrapper>
       <BannerImgWrapper>
