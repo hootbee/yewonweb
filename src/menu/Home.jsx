@@ -14,9 +14,8 @@ const Home = () => {
       <HealthCare></HealthCare>
       <Environment></Environment>
       <Nlp></Nlp>
-      <Ceo></Ceo>
       <News></News>
-  
+      <Ceo></Ceo>
     </>
   );
 };

@@ -35,23 +35,15 @@ const Menu = () => {
       </a>
 
       <a href="#healthCare">
-        <h5>MEDICAL AI</h5>
-      </a>
-
-      <a href="#environment">
-        <h5>ENVIRONMENT</h5>
-      </a>
-
-      <a href="#nlp">
-        <h5>NLP</h5>
-      </a>
-
-      <a href="#ceo">
-        <h5>CEO</h5>
+        <h5>RESEARCH</h5>
       </a>
 
       <a href="#news">
         <h5>NEWS</h5>
+      </a>
+
+      <a href="#ceo">
+        <h5>CEO</h5>
       </a>
 
       <a href="#contact">

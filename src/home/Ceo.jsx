@@ -74,7 +74,7 @@ const InfoSection = styled.div`
 // ===== Component =====
 const RepresentativeIntro = () => {
   return (
-    <Container>
+    <Container id="ceo">
       <Content>
         <Role>대표이사</Role>
         <Name>조재혁</Name>
