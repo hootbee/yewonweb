@@ -7,7 +7,8 @@ const offerings = [
     title: "IoT 센서를 통한 스마트 시티 구축 및 실시간 제어 시스템 연구",
   },
   {
-    title: "교통 및 이동 패턴 예측을 위한\n지리·시간적 LSTM 딥러닝\n프레임워크 개발",
+    title:
+      "교통 및 이동 패턴 예측을 위한\n지리·시간적 LSTM 딥러닝\n프레임워크 개발",
   },
   {
     title: "AI 기반의 자전거 수요 예측을 통한\n지속 가능한 교통 시스템 구축",
@@ -21,7 +22,7 @@ const offerings = [
 ];
 
 const Container = styled.div`
-  background: linear-gradient(180deg, #010920 0%, #061840 100%);
+  /* background: linear-gradient(180deg, #010920 0%, #061840 100%); */
   min-height: 100vh;
   padding: 80px 40px;
   color: white;
@@ -78,7 +79,9 @@ const Card = styled.div`
   transform: translateY(${(props) => (props.index % 2 === 0 ? "0px" : "30px")});
 
   &:hover {
-    transform: translateY(${(props) => (props.index % 2 === 0 ? "-8px" : "22px")});
+    transform: translateY(
+      ${(props) => (props.index % 2 === 0 ? "-8px" : "22px")}
+    );
   }
 `;
 
@@ -115,7 +118,9 @@ const Environment = () => {
     <Container>
       <HeaderSection>
         <Title>Smart Environment AI</Title>
-        <SubTitle>지속 가능한 환경을 위한 인공지능 기반 스마트 기술의 혁신</SubTitle>
+        <SubTitle>
+          지속 가능한 환경을 위한 인공지능 기반 스마트 기술의 혁신
+        </SubTitle>
         <ViewButton>보러가기 →</ViewButton>
       </HeaderSection>
 

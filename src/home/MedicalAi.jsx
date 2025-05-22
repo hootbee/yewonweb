@@ -27,7 +27,7 @@ const offerings = [
 ];
 
 const Container = styled.div`
-  background: linear-gradient(180deg, #010920 0%, #061840 100%);
+  /* background: linear-gradient(180deg, #010920 0%, #061840 100%); */
   min-height: 100vh;
   padding: 80px 40px;
   color: white;
