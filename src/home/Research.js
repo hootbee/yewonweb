@@ -25,16 +25,16 @@ const GradientBackground = styled.div`
 
 const Research = () => {
   return (
-    <>
-      <GradientBackground id="research">
+    <div id="research">
+      <Nlp />
+      <GradientBackground>
         <SectionWrapper>
           <MedicalAi />
           <Environment />
         </SectionWrapper>
       </GradientBackground>
       {/* ✅ NLP는 배경 그라데이션 밖에서 렌더링 */}
-      <Nlp />
-    </>
+    </div>
   );
 };
 

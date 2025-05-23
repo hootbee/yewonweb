@@ -42,7 +42,8 @@ const ContentWrapper = styled.div`
 
 const BannerWrapper = styled.div`
   width: 100%;
-  height: 100px;
+  /* height:100%; */
+  margin-top: 100px;
   background: transparent;
 `;
 
