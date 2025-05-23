@@ -38,6 +38,10 @@ const Menu = () => {
         <h5>RESEARCH</h5>
       </a>
 
+      <a href="#product">
+        <h5>PRODUCT</h5>
+      </a>
+
       <a href="#news">
         <h5>NEWS</h5>
       </a>
