@@ -13,11 +13,11 @@ const SectionWrapper = styled.div`
 const GradientBackground = styled.div`
   background: linear-gradient(
     180deg,
-    #66bfff 0%,
-    #397eed 25%,
-    #1e3fa8 50%,
-    #0a2a75 75%,
-    #010920 100%
+    #1e3fa8 0%,
+    /* 어두운 블루 시작 */ #163b91 25%,
+    /* 더 어두운 블루 */ #0f2e72 50%,
+    /* 남색 계열 */ #081d4d 75%,
+    /* 매우 어두운 남색 */ #010920 100% /* 거의 검정 */
   );
   padding: 0;
   margin: 0;
