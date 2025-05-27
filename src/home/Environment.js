@@ -46,7 +46,8 @@ const SubTitle = styled.p`
   color: #dcdcdc;
 `;
 
-const ViewButton = styled.button`
+const ViewButton = styled.a`
+  display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 14px;
@@ -56,6 +57,11 @@ const ViewButton = styled.button`
   border: 1px solid white;
   border-radius: 30px;
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 `;
 
 const CardGrid = styled.div`
@@ -121,7 +127,13 @@ const Environment = () => {
         <SubTitle>
           지속 가능한 환경을 위한 인공지능 기반 스마트 기술의 혁신
         </SubTitle>
-        <ViewButton>보러가기 →</ViewButton>
+        <ViewButton
+          href="https://scholar.google.co.kr/citations?user=K63R-W0AAAAJ&hl=ko&oi=ao"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          보러가기 →
+        </ViewButton>
       </HeaderSection>
 
       <CardGrid>

@@ -27,14 +27,18 @@ const offerings = [
 ];
 
 const Container = styled.div`
-  /* background: linear-gradient(180deg, #010920 0%, #061840 100%); */
   min-height: 100vh;
   padding: 80px 40px;
   color: white;
   position: relative;
 `;
 
-const LeftSection = styled.div`
+const CenterSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   margin-bottom: 60px;
 `;
 
@@ -115,7 +119,7 @@ const CardText = styled.div`
 const MedicalAi = () => {
   return (
     <Container id="healthCare">
-      <LeftSection>
+      <CenterSection>
         <Title>Medical AI Innovation</Title>
         <SubTitle>의료 현장을 혁신하는 인공지능 솔루션</SubTitle>
         <ViewButton
@@ -125,7 +129,7 @@ const MedicalAi = () => {
         >
           보러가기 →
         </ViewButton>
-      </LeftSection>
+      </CenterSection>
 
       <CardGrid>
         {offerings.map((item, index) => (
