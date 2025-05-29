@@ -1,110 +1,153 @@
 import React from "react";
 import styled from "styled-components";
-import ceoImage from "../img/ceo_image.png";
+import ceoImg from "../img/ceo_change.png";
 
-// ===== Styled Components =====
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-center;
-  justify-content: center;
-  padding: 50px 20px;
-  background-color: #f9fafc; 
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Content = styled.div`
-  flex: 1;
-  min-width: 300px;
-  max-width: 600px;
-  padding: 20px;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const Photo = styled.div`
-  flex: 0 0 300px;
+  background: linear-gradient(180deg, #0c1b3a 0%, #0a0f23 100%);
+  padding: 120px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+`;
 
-  img {
-    width: 260px;
-    height: auto;
-    border-radius: 16px; /* ✅ 부드러운 테두리 */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
   }
 `;
 
-const Role = styled.h3`
+const PhotoBox = styled.div`
+  width: 600px;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+`;
+
+const InfoBox = styled.div`
+  flex: 1;
+  color: #ffffff;
+  padding-left: 60px;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
+`;
+
+const NameWrap = styled.div`
+  margin-bottom: 40px;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+`;
+
+const KoreanName = styled.h1`
+  font-size: 44px;
+  font-weight: 800;
+  color: #ffffff;
+  z-index: 2;
+  position: relative;
+`;
+
+const Title = styled.span`
   font-size: 18px;
-  color: #777;
-  margin-bottom: 5px;
+  color: #9cb8ff;
+  margin-top: 6px;
+  font-weight: 1000;
 `;
 
-const Name = styled.h1`
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 20px;
+const EnglishName = styled.span`
+  position: absolute;
+  top: 15px;     // ✅ 살짝 아래로
+  left: 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.1);  // ✅ 좀 더 연하게
+  z-index: 0;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    font-size: 48px;
+    top: 40px;
+  }
 `;
 
-const InfoSection = styled.div`
-  margin-bottom: 30px;
+const Section = styled.div`
+  margin-bottom: 40px;
 
   h4 {
     font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
+    color: #9cb8ff;
+    margin-bottom: 12px;
+    font-weight: 600;
   }
 
   ul {
-    list-style-type: disc;
+    list-style: disc;
     padding-left: 20px;
-    color: #444;
-    line-height: 1.7;
     font-size: 16px;
+    color: #e0e0e0;
+    line-height: 2;
   }
 `;
 
-// ===== Component =====
-const RepresentativeIntro = () => {
+const CEOProfile = () => {
   return (
     <Container id="ceo">
-      <Content>
-        <Role>대표이사</Role>
-        <Name>조재혁</Name>
+      <Wrapper>
+        <PhotoBox>
+          <img src={ceoImg} alt="조재혁 대표" />
+        </PhotoBox>
 
-        <InfoSection>
-          <h4>경 력 | </h4>
-          <ul>
-            <li>전북대학교 소프트웨어공학과 교수 (2022~)</li>
-            <li>숭실대학교 AI데이터연구센터장 (2019~2022)</li>
-            <li>KISTEP 국가R&D PM (2003~2019)</li>
-            <li>LG CNS 기술리더 (2002~2003)</li>
-          </ul>
-        </InfoSection>
+        <InfoBox>
+          <NameWrap>
+            <EnglishName>Jaehyuk Cho</EnglishName>
+            <KoreanName>조재혁</KoreanName>
+            <Title>대표이사</Title>
+          </NameWrap>
 
-        <InfoSection>
-          <h4>주요 활동 | </h4>
-          <ul>
-            <li>보건복지부 GFID 위원장</li>
-            <li>산업부 AI 반도체·센서 R&D 위원장</li>
-            <li>과기정통부 패키지 AI 위원장</li>
-            <li>스마트시티/SBAS 위원 (국토부)</li>
-            <li>2024 환경 R&D 우수성과 20선 선정</li>
-          </ul>
-        </InfoSection>
-      </Content>
-      <Photo>
-        <img src={ceoImage} alt="대표 사진" />
-      </Photo>
+          <Section>
+            <h4>경력</h4>
+            <ul>
+              <li>전북대학교 소프트웨어공학과 교수 (2022~)</li>
+              <li>숭실대학교 AI데이터연구센터장 (2019~2022)</li>
+              <li>KISTEP 국가R&D PM (2003~2019)</li>
+              <li>LG CNS 기술리더 (2002~2003)</li>
+            </ul>
+          </Section>
+
+          <Section>
+            <h4>주요 활동</h4>
+            <ul>
+              <li>보건복지부 GFID 위원장</li>
+              <li>산업부 AI 반도체·센서 R&D 위원장</li>
+              <li>과기정통부 패키지 AI 위원장</li>
+              <li>스마트시티/SBAS 위원 (국토부)</li>
+              <li>2024 환경 R&D 우수성과 20선 선정</li>
+            </ul>
+          </Section>
+        </InfoBox>
+      </Wrapper>
     </Container>
   );
 };
 
-export default RepresentativeIntro;
+export default CEOProfile;
