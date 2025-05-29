@@ -25,7 +25,7 @@ const newsList = [
 // ==== 스타일 컴포넌트 ====
 const Container = styled.div`
   background: linear-gradient(180deg, #0c1b3a 0%, #0a0f23 100%);
-  padding: 100px 20px;
+  padding: 80px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,28 +33,28 @@ const Container = styled.div`
 `;
 
 const SectionTitle = styled.h1`
-  font-size: 36px;
+  font-size: 28px;
   color: #ffffff;
   font-weight: 800;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   text-align: center;
 `;
 
 const SlideWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 680px;
 `;
 
 const Arrow = styled.div`
   position: absolute;
   top: 50%;
-  ${(props) => (props.left ? "left: -50px;" : "right: -50px;")}
+  ${(props) => (props.left ? "left: -40px;" : "right: -40px;")}
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   border-radius: 50%;
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
@@ -70,9 +70,9 @@ const Arrow = styled.div`
 
 const ContentWrapper = styled.div`
   background-color: #1c2541;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  padding: 32px 28px 36px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  padding: 24px 20px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,27 +81,27 @@ const ContentWrapper = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: auto;
-  border-radius: 16px 16px 0 0;
-  margin-bottom: 24px;
+  max-height: 260px;
   object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 18px;
   filter: brightness(0.95);
 `;
 
 const NewsTitle = styled.h2`
-  font-size: 26px;
+  font-size: 20px;
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   font-weight: 700;
   color: #ffffff;
 `;
 
 const Summary = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   color: #cbd4f4;
-  line-height: 1.8;
-  margin-bottom: 26px;
+  line-height: 1.6;
+  margin-bottom: 22px;
 `;
 
 const Link = styled.a`
@@ -138,7 +138,7 @@ const News = () => {
       <SectionTitle>NEWS</SectionTitle>
       <SlideWrapper>
         <Arrow left onClick={prev}>
-          <FiChevronLeft size={28} color="#ffffff" />
+          <FiChevronLeft size={24} color="#ffffff" />
         </Arrow>
 
         <ContentWrapper>
@@ -151,7 +151,7 @@ const News = () => {
         </ContentWrapper>
 
         <Arrow onClick={next}>
-          <FiChevronRight size={28} color="#ffffff" />
+          <FiChevronRight size={24} color="#ffffff" />
         </Arrow>
       </SlideWrapper>
     </Container>
