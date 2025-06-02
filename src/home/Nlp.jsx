@@ -34,6 +34,7 @@ const fadeIn = keyframes`
 // 전체 배경 + 가운데 정렬
 const Wrapper = styled.div`
   width: 100%;
+  min-height: 100vh;
   background: linear-gradient(180deg, #010920 0%, #061840 100%);
   color: white;
   padding: 80px 16px;
@@ -47,6 +48,7 @@ const Wrapper = styled.div`
 const Inner = styled.div`
   width: 100%;
   max-width: 1200px;
+  margin-top: 80px;
 `;
 
 // 타이틀 섹션
