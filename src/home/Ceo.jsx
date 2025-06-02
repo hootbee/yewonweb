@@ -1,23 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import ceoImg from "../img/ceo_change.png";
+import ceoImg from "../img/prof.png";
 
 const Container = styled.div`
-  background: transparent;
+  background: #ffffff;
+  min-height: 100vh;
   padding: 120px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
+  justify-content: center;
   width: 100%;
-  padding: 0 40px;
+  max-width: 900px;      // ✅ 딱 중간 크기
+  gap: 40px;             // ✅ 간격 줄이기
+  padding: 0;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -26,13 +27,15 @@ const Wrapper = styled.div`
 `;
 
 const PhotoBox = styled.div`
-  width: 600px;
+  width: min(40%, 400px);
   flex-shrink: 0;
 
   img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
@@ -43,8 +46,9 @@ const PhotoBox = styled.div`
 
 const InfoBox = styled.div`
   flex: 1;
-  color: #ffffff;
-  padding-left: 60px;
+  max-width: 450px;     // ✅ 너무 넓지 않게 제한
+  color: #1c1c1c;
+  padding-left: 0;
 
   @media (max-width: 768px) {
     padding-left: 0;
@@ -62,25 +66,25 @@ const NameWrap = styled.div`
 const KoreanName = styled.h1`
   font-size: 44px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1c1c1c;
   z-index: 2;
   position: relative;
 `;
 
 const Title = styled.span`
   font-size: 18px;
-  color: #9cb8ff;
+  color: #0044cc;
   margin-top: 6px;
   font-weight: 1000;
 `;
 
 const EnglishName = styled.span`
   position: absolute;
-  top: 15px; // ✅ 살짝 아래로
+  top: 15px;
   left: 0;
   font-family: "Pacifico", cursive;
   font-size: 80px;
-  color: rgba(255, 255, 255, 0.1); // ✅ 좀 더 연하게
+  color: rgba(0, 0, 0, 0.05);
   z-index: 0;
   pointer-events: none;
 
@@ -95,7 +99,7 @@ const Section = styled.div`
 
   h4 {
     font-size: 20px;
-    color: #9cb8ff;
+    color: #0044cc;
     margin-bottom: 12px;
     font-weight: 600;
   }
@@ -104,7 +108,7 @@ const Section = styled.div`
     list-style: disc;
     padding-left: 20px;
     font-size: 16px;
-    color: #e0e0e0;
+    color: #333333;
     line-height: 2;
   }
 `;

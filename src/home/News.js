@@ -24,7 +24,7 @@ const newsList = [
 
 // ==== 스타일 컴포넌트 ====
 const Container = styled.div`
-  background: transparent;
+  background: #ffffff; /* ✅ 흰색 배경 */
   padding: 80px 20px;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ const Container = styled.div`
 
 const SectionTitle = styled.h1`
   font-size: 28px;
-  color: #ffffff;
+  color: #1c1c1c; /* ✅ 검정 텍스트 */
   font-weight: 800;
   margin-bottom: 40px;
   text-align: center;
@@ -51,8 +51,7 @@ const Arrow = styled.div`
   top: 50%;
   ${(props) => (props.left ? "left: -40px;" : "right: -40px;")}
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.1); /* ✅ 연한 회색 배경 */
   border-radius: 50%;
   padding: 10px;
   cursor: pointer;
@@ -60,7 +59,7 @@ const Arrow = styled.div`
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -69,9 +68,9 @@ const Arrow = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  background-color: #1c2541;
+  background-color: #f2f2f2; /* ✅ 밝은 카드 배경 */
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* ✅ 그림자 줄임 */
   padding: 24px 20px 28px;
   display: flex;
   flex-direction: column;
@@ -85,7 +84,7 @@ const Img = styled.img`
   object-fit: cover;
   border-radius: 12px 12px 0 0;
   margin-bottom: 18px;
-  filter: brightness(0.95);
+  filter: brightness(0.97);
 `;
 
 const NewsTitle = styled.h2`
@@ -93,20 +92,20 @@ const NewsTitle = styled.h2`
   text-align: center;
   margin-bottom: 12px;
   font-weight: 700;
-  color: #ffffff;
+  color: #222222; /* ✅ 어두운 텍스트 */
 `;
 
 const Summary = styled.p`
   font-size: 14px;
   text-align: center;
-  color: #cbd4f4;
+  color: #555555; /* ✅ 중간 회색 */
   line-height: 1.6;
   margin-bottom: 22px;
 `;
 
 const Link = styled.a`
   font-size: 15px;
-  color: #66aaff;
+  color: #3366cc; /* ✅ 파란 링크 */
   font-weight: bold;
   text-decoration: none;
   display: flex;
@@ -138,7 +137,7 @@ const News = () => {
       <SectionTitle>NEWS</SectionTitle>
       <SlideWrapper>
         <Arrow left onClick={prev}>
-          <FiChevronLeft size={24} color="#ffffff" />
+          <FiChevronLeft size={24} color="#000000" /> {/* ✅ 검정 아이콘 */}
         </Arrow>
 
         <ContentWrapper>
@@ -155,7 +154,7 @@ const News = () => {
         </ContentWrapper>
 
         <Arrow onClick={next}>
-          <FiChevronRight size={24} color="#ffffff" />
+          <FiChevronRight size={24} color="#000000" /> {/* ✅ 검정 아이콘 */}
         </Arrow>
       </SlideWrapper>
     </Container>

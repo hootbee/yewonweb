@@ -40,10 +40,9 @@ const Footer = () => {
   return (
     <FooterWrapper id="contact">
       <FooterTitle>문의하기</FooterTitle>
-      <FooterText>이메일: support@quadstar.ai</FooterText>
-      <FooterText>전화: 02-1234-5678</FooterText>
-      <FooterText>서울특별시 성북구 미래로 101, 퀘드스타빌딩 5층</FooterText>
-      <FooterLink href="/support">고객지원 페이지 이동</FooterLink>
+      <FooterText>이메일: hello@jbnu.ac.kr</FooterText>
+      <FooterText>전화: 063-123-4567</FooterText>
+      <FooterText>서울특별시 성북구 미래로 101</FooterText>
     </FooterWrapper>
   );
 };
