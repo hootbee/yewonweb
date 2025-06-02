@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ceoImg from "../img/ceo_change.png";
 
 const Container = styled.div`
-  background: linear-gradient(180deg, #0c1b3a 0%, #0a0f23 100%);
+  background: transparent;
   padding: 120px 20px;
   display: flex;
   justify-content: center;
@@ -76,11 +76,11 @@ const Title = styled.span`
 
 const EnglishName = styled.span`
   position: absolute;
-  top: 15px;     // ✅ 살짝 아래로
+  top: 15px; // ✅ 살짝 아래로
   left: 0;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 80px;
-  color: rgba(255, 255, 255, 0.1);  // ✅ 좀 더 연하게
+  color: rgba(255, 255, 255, 0.1); // ✅ 좀 더 연하게
   z-index: 0;
   pointer-events: none;
 

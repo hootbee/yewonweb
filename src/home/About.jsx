@@ -26,7 +26,7 @@ const slideUp = keyframes`
 
 const MainImgWrapper = styled.div`
   width: 100%;
-  height: 500px;
+  height: 100vh;
   overflow-y: hidden;
   margin: 0;
   padding: 0;
@@ -34,7 +34,7 @@ const MainImgWrapper = styled.div`
   animation: ${({ inView }) => (inView ? growShrink : "none")} 1s ease-out;
   @media screen and (min-width: 768px) {
     margin: 0;
-    height: 700px;
+    height: 100vh;
   }
 `;
 
@@ -194,67 +194,6 @@ const About = () => {
         <Img src={img1} />
         <MainImgContent>HUMAN AI PLUS와 함께</MainImgContent>
       </MainImgWrapper>
-      {/* <MainWrapper>
-        <MainTitle>편의성이 열쇠입니다</MainTitle>
-        <MainContent>
-          일상적인 출퇴근을 용이하게 하고자, 편의성을 염두에 두고 ebii를
-          설계했습니다. 펑크 방지 타이어, 자동 잠금 시스템, 고속 충전 배터리 등,
-          Quadstar가 생활 편의성을 높여 줍니다.
-        </MainContent>
-      </MainWrapper>*/}
-      {/* <SubContainer>
-        <SubWrapper3>
-          <SubWrapper2>
-            <SubWrapper
-              ref={(el) => (refs.current[1] = el)}
-              data-index={1}
-              inView={inView[1]}
-            >
-              <SubTitle>펑크가 날 일이 없습니다</SubTitle>
-              <SubContent>컨텐츠.</SubContent>
-              <SubImg src={img1} />
-            </SubWrapper>
-            <SubWrapper
-              ref={(el) => (refs.current[2] = el)}
-              data-index={2}
-              inView={inView[2]}
-            >
-              <SubTitle>고속 충전.</SubTitle>
-              <SubContent>
-                바쁜 낮이나 밤에 2.5시간을 할애하여 ebii를 충전하면, 거의 또는
-                전혀 시간을 들일 필요 없이 100%로 충전됩니다. 이동 중에도 유지
-                됩니다!
-              </SubContent>
-              <SubImg src={img1} />
-            </SubWrapper>
-          </SubWrapper2>
-          <SubWrapper
-            ref={(el) => (refs.current[3] = el)}
-            data-index={3}
-            inView={inView[3]}
-          >
-            <SubTitle>자동 잠금 해제</SubTitle>
-            <SubContent>
-              늘 이동할 준비가 되어 있습니다. ebii의 무선 Bluetooth 연결은
-              라이더가 자전거를 떠날 때 자동으로 잠그고 가까이 있을 때 다시
-              잠금을 해제합니다.
-            </SubContent>
-            <SubImg src={img1} />
-          </SubWrapper>
-        </SubWrapper3>
-        <SubWrapper
-          ref={(el) => (refs.current[4] = el)}
-          data-index={4}
-          inView={inView[4]}
-        >
-          <SubTitle>전원 공유.</SubTitle>
-          <SubContent>
-            탈착식 배터리로 가정에서 편하게 충전할 수 있을 뿐 아니라, 휴대폰 및
-            노트북에 휴대용 충전기로도 쓰입니다. 전원을 공유하세요!.
-          </SubContent>
-          <SubImg src={img1} />
-        </SubWrapper>
-      </SubContainer> */}
     </>
   );
 };

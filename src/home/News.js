@@ -24,7 +24,7 @@ const newsList = [
 
 // ==== 스타일 컴포넌트 ====
 const Container = styled.div`
-  background: linear-gradient(180deg, #0c1b3a 0%, #0a0f23 100%);
+  background: transparent;
   padding: 80px 20px;
   display: flex;
   flex-direction: column;
