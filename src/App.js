@@ -8,8 +8,9 @@ import styled from "styled-components";
 
 // 스크롤 부드럽게 설정
 const GlobalStyle = createGlobalStyle`
-  html {
+  html,body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 `;
 

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const FooterWrapper = styled.footer`
   width: 100%;
+  box-sizing: border-box;
   background-color: #2c2c2c;
   color: white;
   padding: 40px 20px;
