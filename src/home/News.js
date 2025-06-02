@@ -145,7 +145,11 @@ const News = () => {
           <Img src={currentNews.img} alt="뉴스 이미지" />
           <NewsTitle>{currentNews.title}</NewsTitle>
           <Summary>{currentNews.summary}</Summary>
-          <Link href={currentNews.link} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={currentNews.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             뉴스 보러가기 <FiArrowRight />
           </Link>
         </ContentWrapper>

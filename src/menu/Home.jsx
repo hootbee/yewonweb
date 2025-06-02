@@ -4,8 +4,8 @@ import React from "react";
 import About from "../home/About";
 import Ceo from "../home/Ceo";
 import News from "../home/News";
-import Research from "../home/Research";
 import AirStellar from "../home/AirStellar";
+import Research from "../home/Research";
 const Home = () => {
   return (
     <>

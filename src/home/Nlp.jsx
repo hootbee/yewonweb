@@ -124,9 +124,43 @@ const PopupOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: ${({ show }) => (show ? "flex" : "none")};
+  height: 100vh;
+  pointer-events: none;
+  background: rgba(0, 0, 0, ${({ opacity }) => opacity});
+  z-index: -1;
+  transition: background 0.2s ease;
+`;
+
+const ContentWrapper = styled.div`
+  margin-bottom: 200px;
+  flex: 1;
+`;
+
+const BannerWrapper = styled.div`
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 100px;
+  background: transparent;
+`;
+
+const BannerTitle = styled.p`
+  font: bold 60px "arial";
+  color: black;
+  text-align: center;
+  margin: 50px 20px 0 20px;
+  padding-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin: 60px 200px 0 200px;
+  }
+`;
+
+// ✅ 이미지 중앙 정렬 핵심 부분
+const BannerImgWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
   align-items: center;
   justify-content: center;
   z-index: 999;
