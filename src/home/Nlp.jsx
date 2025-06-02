@@ -1,239 +1,255 @@
-import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import { FiArrowRight } from "react-icons/fi";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
-const offerings = [
-  {
-    title: "시계열 데이터 분석",
-    description:
-      "센서 데이터, 금융 데이터 등 시간 축을 가진 데이터를 예측하거나 이상 탐지하는 AI 모델을 설계합니다.",
-  },
-  {
-    title: "딥러닝 기반 예측 모델",
-    description:
-      "CNN, RNN, Transformer 등 다양한 딥러닝 아키텍처를 활용하여 복잡한 패턴 인식 및 예측 문제를 해결합니다.",
-  },
-  {
-    title: "멀티모달 학습",
-    description:
-      "텍스트, 이미지, 음성 등 여러 종류의 데이터를 통합하여 학습하는 복합형 AI 모델을 구축합니다.",
-  },
-  {
-    title: "자연어 처리 (NLP)",
-    description:
-      "감성 분석, 문서 요약, 개체명 인식 등 자연어 처리 기술을 기반으로 한 다양한 AI 서비스를 제공합니다.",
-  },
-];
-
-// 애니메이션
-const fadeIn = keyframes`
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-`;
-
-// 전체 배경 + 가운데 정렬
+// 전체 배경 및 중앙 정렬
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(180deg, #010920 0%, #061840 100%);
   color: white;
-  padding: 80px 16px;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-`;
-
-// 내부 콘텐츠 폭 제한
-const Inner = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 80px;
-`;
-
-// 타이틀 섹션
-const CenterSection = styled.div`
-  text-align: center;
-  margin-bottom: 60px;
-`;
-
-const Title = styled.h1`
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-
-const SubTitle = styled.p`
-  font-size: 18px;
-  color: #d0d0d0;
-  margin-bottom: 30px;
-`;
-
-// 버튼
-const ViewButton = styled.a`
-  padding: 10px 20px;
-  font-weight: bold;
-  border: 1px solid white;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-`;
-
-// 카드 리스트
-const CardGrid = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 30px;
-  box-sizing: border-box;
-`;
-
-// 카드 스타일
-const Card = styled.div`
-  background: linear-gradient(135deg, #0e3e91, #1b5fe5);
-  padding: 20px;
-  border-radius: 16px;
-  height: 180px;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: translateY(-6px);
-  }
-`;
-
-const CardText = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 1.4;
-  white-space: pre-line;
-`;
-
-const ArrowIcon = styled(FiArrowRight)`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 20px;
-  color: white;
-`;
-
-// 팝업
-const PopupOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  pointer-events: none;
-  background: rgba(0, 0, 0, ${({ opacity }) => opacity});
-  z-index: -1;
-  transition: background 0.2s ease;
-`;
-
-const ContentWrapper = styled.div`
-  margin-bottom: 200px;
-  flex: 1;
-`;
-
-const BannerWrapper = styled.div`
-  width: 100%;
-  /* height: 100%; */
-  margin-top: 100px;
-  background: transparent;
-`;
-
-const BannerTitle = styled.p`
-  font: bold 60px "arial";
-  color: black;
-  text-align: center;
-  margin: 50px 20px 0 20px;
-  padding-bottom: 10px;
-
-  @media screen and (min-width: 768px) {
-    margin: 60px 200px 0 200px;
-  }
-`;
-
-// ✅ 이미지 중앙 정렬 핵심 부분
-const BannerImgWrapper = styled.div`
-  width: 100%;
-  height: 400px;
+  padding: 100px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
-  z-index: 999;
+  box-sizing: border-box;
 `;
 
-const PopupContent = styled.div`
-  background: #fff;
-  color: black;
-  padding: 30px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 500px;
-  animation: ${fadeIn} 0.3s ease;
+// 내부 레이아웃
+const Inner = styled.div`
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+
+// 왼쪽 설명 텍스트
+const LeftContent = styled.div`
+  flex: 1;
+  min-width: 300px;
+  padding-right: 20px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+`;
+
+const Title = styled.h2`
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 16px;
+`;
+
+const DescriptionBlock = styled.div`
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+`;
+
+const SectionTitle = styled.h4`
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 16px 0 8px;
+`;
+
+const Ul = styled.ul`
+  padding-left: 24px;
+  margin-bottom: 12px;
+  list-style-type: disc;
+  li {
+    margin-bottom: 6px;
+    text-indent: -10px;
+    padding-left: 10px;
+  }
+`;
+
+// 원형 영역 및 중심 이미지
+const CircleContainer = styled.div`
   position: relative;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: translateX(-60px);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+  }
 `;
 
-const CloseButton = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 24px;
+const CenterImage = styled.div`
+  width: 200px;
+  height: 200px;
+  background: url('/images/lock-knob.png') no-repeat center/cover;
+  border-radius: 50%;
   position: absolute;
-  top: 16px;
-  right: 20px;
-  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-// 메인 컴포넌트
-const Nlp = () => {
-  const [selected, setSelected] = useState(null);
+const RotatingGroup = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: ${({ $rotateDeg }) => `rotate(${$rotateDeg}deg)`};
+  transform-origin: center center;
+  transition: transform 1.2s ease-in-out;
+`;
 
-  const handleCardClick = (index) => setSelected(index);
-  const handleClose = () => setSelected(null);
+const Dot = styled.div`
+  position: absolute;
+  width: ${({ $active }) => ($active ? "14px" : "8px")};
+  height: ${({ $active }) => ($active ? "14px" : "8px")};
+  background: ${({ $active }) => ($active ? "#3da5ff" : "#ffffff88")};
+  border: ${({ $active }) => ($active ? "4px solid #3da5ff" : "none")};
+  border-radius: 50%;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  transform: translate(-50%, -50%); /* 점의 중앙이 top/left에 오도록 */
+  transition: all 0.3s ease;
+  box-shadow: ${({ $active }) =>
+    $active ? "0 0 10px rgba(61, 165, 255, 0.6)" : "none"};
+`;
+
+const DotLabel = styled.div`
+  position: absolute;
+  color: white;
+  transform: translate(-50%, -50%); /* 라벨의 중앙이 top/left에 오도록 */
+  text-align: center;
+  white-space: pre-line;
+  word-break: keep-all;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  transition: all 0.3s ease;
+  font-size: ${({ $isActive }) => ($isActive ? "22px" : "14px")};
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
+`;
+
+const offerings = [
+  {
+    title: "NLP",
+    skills: ["BERT, BiLSTM, Transformer 등", "최신 딥러닝 모델을 활용한 자연어 처리"],
+    applications: [
+      "SLM 기반의 의료 진단 보고서 분석",
+      "이미지와 텍스트 결합을 통한 정보 추출",
+      "대규모 텍스트 데이터 분석 및 분류"
+    ],
+    // 하단 (200, 400) 부근 - 점과 라벨 간격 조정
+    top: "395px",
+    left: "200px",
+    labelTop: "450px", // 455px -> 450px (조금 더 가까이)
+    labelLeft: "200px",
+  },
+  {
+    title: "Deep Learning\n& Transfer Learning",
+    skills: [
+      "전이 학습과 Learning Without Forgetting(LwF), COVID-19 진단",
+      "다양한 상황에서 머신러닝 최적화 및 자율 시스템"
+    ],
+    applications: [
+      "의료 영상 분석, 질병 예측 및 진단, 병원에서의 AI",
+      "스마트 헬스케어 및 원격 진료 시스템",
+      "스마트 시티 및 자율 시스템"
+    ],
+    // 우측 (400, 200) 부근 - 점과 라벨 간격 조정 (너무 멀지 않게)
+    top: "200px",
+    left: "395px",
+    labelTop: "200px",
+    labelLeft: "460px", // 500px -> 460px (점과 가깝게)
+  },
+  {
+    title: "Time Series Data",
+    skills: ["LSTM, Autoregressive 모델", "시계열 예측 알고리즘"],
+    applications: [
+      "환경 데이터 분석",
+      "웨어러블 디바이스로 수집된 건강 데이터의 예측 분석"
+    ],
+    // 상단 (200, 0) 부근 - 점과 라벨 간격 조정
+    top: "5px",
+    left: "200px",
+    labelTop: "-50px", // -55px -> -50px (조금 더 가까이)
+    labelLeft: "200px",
+  },
+  {
+    title: "Multimodal Data",
+    skills: ["CNN, Autoencoder", "다중 모달 학습 알고리즘"],
+    applications: [
+      "이미지, 텍스트, 모션, 신체 신호 등",
+      "센서 데이터 통합 분석을 통한 환경 및 건강 데이터 처리"
+    ],
+    // 좌측 (0, 200) 부근 - 점과 라벨 간격 조정
+    top: "200px",
+    left: "5px",
+    labelTop: "200px",
+    labelLeft: "-90px", // -95px -> -90px (조금 더 가까이)
+  },
+];
+
+const NlpCircular = () => {
+  const [rotateDeg, setRotateDeg] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotateDeg((prev) => prev + 90);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const westIndexMap = [3, 0, 1, 2]; // 0°, 90°, 180°, 270°일 때 서쪽 점에 오는 인덱스
+  const currentIndex = westIndexMap[(rotateDeg / 90) % 4];
+  const current = offerings[currentIndex];
 
   return (
     <Wrapper id="nlp">
       <Inner>
-        <CenterSection>
-          <Title>Applied AI Fields</Title>
-          <SubTitle>AI 기술이 적용되는 다양한 분야를 만나보세요</SubTitle>
-          <ViewButton
-            href="https://scholar.google.co.kr/citations?user=K63R-W0AAAAJ&hl=ko&oi=ao"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            보러가기 →
-          </ViewButton>
-        </CenterSection>
-
-        <CardGrid>
-          {offerings.map((item, index) => (
-            <Card key={index} onClick={() => handleCardClick(index)}>
-              <ArrowIcon />
-              <CardText>{item.title}</CardText>
-            </Card>
-          ))}
-        </CardGrid>
-
-        <PopupOverlay show={selected !== null}>
-          <PopupContent>
-            <CloseButton onClick={handleClose}>×</CloseButton>
-            {selected !== null && (
-              <>
-                <h2>{offerings[selected].title}</h2>
-                <p>{offerings[selected].description}</p>
-              </>
-            )}
-          </PopupContent>
-        </PopupOverlay>
+        <LeftContent>
+          <Title>{current.title}</Title>
+          <DescriptionBlock>
+            <SectionTitle>주요 기술</SectionTitle>
+            <Ul>
+              {current.skills.map((s, i) => (
+                <li key={i}>{s}</li>
+              ))}
+            </Ul>
+            <SectionTitle>응용 분야</SectionTitle>
+            <Ul>
+              {current.applications.map((a, i) => (
+                <li key={i}>{a}</li>
+              ))}
+            </Ul>
+          </DescriptionBlock>
+        </LeftContent>
+        <CircleContainer>
+          <RotatingGroup $rotateDeg={rotateDeg}>
+            {offerings.map((item, idx) => (
+              <React.Fragment key={idx}>
+                <Dot top={item.top} left={item.left} $active={currentIndex === idx} />
+                <DotLabel
+                  top={item.labelTop}
+                  left={item.labelLeft}
+                  $isActive={currentIndex === idx}
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`
+                  }}
+                >
+                  {item.title}
+                </DotLabel>
+              </React.Fragment>
+            ))}
+          </RotatingGroup>
+          <CenterImage />
+        </CircleContainer>
       </Inner>
     </Wrapper>
   );
 };
 
-export default Nlp;
+export default NlpCircular;
