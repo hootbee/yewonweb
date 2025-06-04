@@ -4,7 +4,6 @@ import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import img1 from "../img/news1.png";
 import img2 from "../img/news2.png";
 
-// 뉴스 데이터 배열
 const newsList = [
   {
     img: img1,
@@ -22,22 +21,29 @@ const newsList = [
   },
 ];
 
-// ==== 스타일 컴포넌트 ====
+// 스타일 컴포넌트
 const Container = styled.div`
-  background: #ffffff; /* ✅ 흰색 배경 */
-  padding: 80px 20px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding: 60px 16px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  justify-content: flex-start;
 `;
 
 const SectionTitle = styled.h1`
-  font-size: 28px;
-  color: #1c1c1c; /* ✅ 검정 텍스트 */
+  font-size: 2.5vw;
   font-weight: 800;
+  color: #1c1c1c;
   margin-bottom: 40px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const SlideWrapper = styled.div`
@@ -51,7 +57,7 @@ const Arrow = styled.div`
   top: 50%;
   ${(props) => (props.left ? "left: -40px;" : "right: -40px;")}
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.1); /* ✅ 연한 회색 배경 */
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   padding: 10px;
   cursor: pointer;
@@ -68,10 +74,10 @@ const Arrow = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  background-color: #f2f2f2; /* ✅ 밝은 카드 배경 */
+  background-color: #f2f2f2;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* ✅ 그림자 줄임 */
-  padding: 24px 20px 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,45 +86,56 @@ const ContentWrapper = styled.div`
 
 const Img = styled.img`
   width: 100%;
+  height: auto;
   max-height: 260px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
   margin-bottom: 18px;
-  filter: brightness(0.97);
 `;
 
 const NewsTitle = styled.h2`
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 12px;
+  font-size: 1.6vw;
   font-weight: 700;
-  color: #222222; /* ✅ 어두운 텍스트 */
+  color: #222222;
+  margin-bottom: 12px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Summary = styled.p`
-  font-size: 14px;
-  text-align: center;
-  color: #555555; /* ✅ 중간 회색 */
+  font-size: 1vw;
+  color: #555555;
   line-height: 1.6;
+  text-align: center;
   margin-bottom: 22px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const Link = styled.a`
-  font-size: 15px;
-  color: #3366cc; /* ✅ 파란 링크 */
+  font-size: 1vw;
   font-weight: bold;
+  color: #3366cc;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s ease;
 
   &:hover {
     opacity: 0.8;
   }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
-// ==== 컴포넌트 ====
+// 컴포넌트
 const News = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -137,7 +154,7 @@ const News = () => {
       <SectionTitle>NEWS</SectionTitle>
       <SlideWrapper>
         <Arrow left onClick={prev}>
-          <FiChevronLeft size={24} color="#000000" /> {/* ✅ 검정 아이콘 */}
+          <FiChevronLeft size={24} color="#000" />
         </Arrow>
 
         <ContentWrapper>
@@ -154,7 +171,7 @@ const News = () => {
         </ContentWrapper>
 
         <Arrow onClick={next}>
-          <FiChevronRight size={24} color="#000000" /> {/* ✅ 검정 아이콘 */}
+          <FiChevronRight size={24} color="#000" />
         </Arrow>
       </SlideWrapper>
     </Container>
