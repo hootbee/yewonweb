@@ -5,6 +5,7 @@ import News from "./News";
 import Research from "./Research";
 import MedicalAi from "./MedicalAi";
 import Environment from "./Environment";
+import Footer from "../components/Footer"; // ✅ 추가
 
 const GradientBackground = styled.div`
   background: linear-gradient(
@@ -19,24 +20,42 @@ const GradientBackground = styled.div`
   margin: 0;
 `;
 
-// ✅ 콘텐츠 Wrapper
 const SectionWrapper = styled.div`
   width: 100%;
   padding: 0;
   margin: 0;
 `;
 
+const SnapSection = styled.section`
+  scroll-snap-align: start;
+  min-height: 100vh;
+  width: 100%;
+`;
+
 const Gradation = () => {
   return (
     <>
-      <Research /> {/* Nlp 단독 */}
+      <SnapSection>
+        <Research />
+      </SnapSection>
       <GradientBackground>
         <SectionWrapper>
-          <MedicalAi />
-          <Environment />
-          <AirStellar />
-          <News />
-          <Ceo />
+          <SnapSection>
+            <MedicalAi />
+          </SnapSection>
+          <SnapSection>
+            <Environment />
+          </SnapSection>
+          <SnapSection>
+            <AirStellar />
+          </SnapSection>
+          <SnapSection>
+            <News />
+          </SnapSection>
+          <SnapSection>
+            <Ceo />
+          </SnapSection>
+          <Footer /> {/* ✅ SnapSection 없이 자연스럽게 Ceo 아래에 배치 */}
         </SectionWrapper>
       </GradientBackground>
     </>

@@ -12,7 +12,8 @@ const FooterWrapper = styled.footer`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 100px;
+  overflow-x: hidden;
+  word-break: break-word;
 `;
 
 const FooterTitle = styled.h3`

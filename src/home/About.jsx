@@ -27,21 +27,16 @@ const slideUp = keyframes`
 const MainImgWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  overflow-y: hidden;
-  margin: 0;
-  padding: 0;
+  overflow: hidden;
   position: relative;
   animation: ${({ inView }) => (inView ? growShrink : "none")} 1s ease-out;
-  @media screen and (min-width: 768px) {
-    margin: 0;
-    height: 100vh;
-  }
 `;
 
 const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 `;
 
 const MainImgContent = styled.div`

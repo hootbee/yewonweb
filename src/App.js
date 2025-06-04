@@ -34,7 +34,6 @@ const App = () => {
       <MainWrapper>
         <RouterProvider router={router} />
       </MainWrapper>
-      <Footer />
     </>
   );
 };
