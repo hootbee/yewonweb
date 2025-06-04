@@ -41,9 +41,9 @@ const Footer = () => {
   return (
     <FooterWrapper id="contact">
       <FooterTitle>문의하기</FooterTitle>
-      <FooterText>이메일: hello@jbnu.ac.kr</FooterText>
-      <FooterText>전화: 063-123-4567</FooterText>
-      <FooterText>서울특별시 성북구 미래로 101</FooterText>
+      <FooterText>Email. humanai.plus@gmail.com</FooterText>
+      <FooterText>Tel. 063-270-4771</FooterText>
+      <FooterText>Address. 전라북도 전주시 덕진구 백제대로 567 전북대학교 공학5호관 504-2호</FooterText>
     </FooterWrapper>
   );
 };
