@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { FiArrowRight } from "react-icons/fi";
-import cardBg from "../img/object.png"; // 실제 이미지 경로로 변경하세요
+import cardBg from "../img/object.png"; // 실제 이미지 경로
 
+// 카드 콘텐츠
 const offerings = [
   {
     title: "주요 질병 진단 및 예측을 위한\nAI 알고리즘 개발",
@@ -26,36 +27,47 @@ const offerings = [
   },
 ];
 
+// 전체 컨테이너 (스크롤스냅용 섹션에 맞춤)
 const Container = styled.div`
   min-height: 100vh;
-  padding: 80px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60px 20px 40px;
   color: white;
-  position: relative;
-`;
-
-const CenterSection = styled.div`
+  background: transparent;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  gap: 40px;
+`;
+
+// 중앙 제목 영역
+const CenterSection = styled.div`
   text-align: center;
-  margin-bottom: 60px;
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 3.2vw;
   font-weight: bold;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 const SubTitle = styled.p`
-  font-size: 16px;
-  margin-top: 8px;
+  font-size: 1.2vw;
+  margin-top: 10px;
   color: #dcdcdc;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ViewButton = styled.a`
-  display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 14px;
@@ -64,39 +76,38 @@ const ViewButton = styled.a`
   color: white;
   border: 1px solid white;
   border-radius: 30px;
-  cursor: pointer;
   text-decoration: none;
+  display: inline-block;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
   }
 `;
 
+// 카드 그리드 영역
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 40px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 `;
 
+// 카드 단위
 const Card = styled.div`
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px;
   height: 200px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  cursor: pointer;
-  transform: translateY(${(props) => (props.index % 2 === 0 ? "0px" : "30px")});
 
   &:hover {
-    transform: translateY(
-      ${(props) => (props.index % 2 === 0 ? "-8px" : "22px")}
-    );
+    transform: scale(1.03);
   }
 `;
 
@@ -104,16 +115,20 @@ const ArrowIcon = styled(FiArrowRight)`
   position: absolute;
   top: 16px;
   right: 16px;
-  font-size: 22px;
+  font-size: 20px;
   color: white;
 `;
 
 const CardText = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
-  line-height: 1.4;
+  line-height: 1.5;
   white-space: pre-line;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const MedicalAi = () => {
@@ -133,7 +148,7 @@ const MedicalAi = () => {
 
       <CardGrid>
         {offerings.map((item, index) => (
-          <Card key={index} index={index} bg={item.bg}>
+          <Card key={index} bg={item.bg}>
             <ArrowIcon />
             <CardText>{item.title}</CardText>
           </Card>
