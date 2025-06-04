@@ -29,34 +29,43 @@ const offerings = [
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 80px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60px 20px 40px;
   color: white;
-  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
 `;
 
 const CenterSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  margin-bottom: 60px;
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 3.2vw;
   font-weight: bold;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 const SubTitle = styled.p`
-  font-size: 16px;
-  margin-top: 8px;
+  font-size: 1.2vw;
+  margin-top: 10px;
   color: #dcdcdc;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ViewButton = styled.a`
-  display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 14px;
@@ -65,8 +74,8 @@ const ViewButton = styled.a`
   color: white;
   border: 1px solid white;
   border-radius: 30px;
-  cursor: pointer;
   text-decoration: none;
+  display: inline-block;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -76,7 +85,9 @@ const ViewButton = styled.a`
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 40px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 `;
 
 const Card = styled.div`
@@ -88,14 +99,12 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
-  cursor: pointer;
-  transform: translateY(${(props) => (props.index % 2 === 0 ? "0px" : "30px")});
+  overflow: hidden;
 
   &:hover {
-    transform: translateY(${(props) => (props.index % 2 === 0 ? "-8px" : "22px")});
+    transform: scale(1.03);
   }
 
   &::after {
@@ -103,7 +112,7 @@ const Card = styled.div`
     position: absolute;
     inset: 0;
     border-radius: 16px;
-    background: rgba(0, 0, 0, 0.4); /* 어두운 오버레이 */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
   }
 `;
@@ -123,6 +132,10 @@ const CardText = styled.div`
   line-height: 1.4;
   white-space: pre-line;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const Environment = () => {
@@ -144,7 +157,7 @@ const Environment = () => {
 
       <CardGrid>
         {offerings.map((item, index) => (
-          <Card key={index} index={index} bg={item.bg}>
+          <Card key={index} bg={item.bg}>
             <ArrowIcon />
             <CardText>{item.title}</CardText>
           </Card>
