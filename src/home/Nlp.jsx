@@ -135,7 +135,7 @@ const DotLabel = styled.div`
 
 const offerings = [
   {
-    title: "NLP",
+    title: "NLP\n&\n sLLM",
     skills: ["BERT, BiLSTM, Transformer 등", "최신 딥러닝 모델을 활용한 자연어 처리"],
     applications: [
       "SLM 기반의 의료 진단 보고서 분석",
@@ -149,7 +149,7 @@ const offerings = [
     labelLeft: "200px",
   },
   {
-    title: "Deep Learning\n& Transfer Learning",
+    title: "Deep Learning\n& Machine Learning",
     skills: [
       "전이 학습과 Learning Without Forgetting(LwF), COVID-19 진단",
       "다양한 상황에서 머신러닝 최적화 및 자율 시스템"
@@ -179,7 +179,7 @@ const offerings = [
     labelLeft: "200px",
   },
   {
-    title: "Multimodal Data",
+    title: "AI Agent\n&\nMultimodal",
     skills: ["CNN, Autoencoder", "다중 모달 학습 알고리즘"],
     applications: [
       "이미지, 텍스트, 모션, 신체 신호 등",
