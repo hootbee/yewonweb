@@ -32,7 +32,7 @@ const Container = styled.div`
   min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
-  padding: 60px 20px 40px;
+  padding: 100px 20px 0px;
   color: white;
   background: transparent;
   display: flex;
