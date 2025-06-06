@@ -16,7 +16,7 @@ const BackgroundText = styled.div`
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 240px;
   font-weight: 300;
   color: #3d3d1f;
@@ -30,8 +30,8 @@ const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 120px;          // ✅ 그대로 유지
-  margin-top: 340px;   // ✅ 이미지가 커졌으니 여백 살짝 늘림
+  gap: 120px; // ✅ 그대로 유지
+  margin-top: 340px; // ✅ 이미지가 커졌으니 여백 살짝 늘림
   z-index: 1;
   position: relative;
 `;
@@ -44,7 +44,7 @@ const Product = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 400px;       // ✅ 더 크게
+  width: 400px; // ✅ 더 크게
   height: auto;
   margin-bottom: 24px; // 살짝 여유
 `;
@@ -81,7 +81,7 @@ const AirStellar = () => {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper id="airStellar">
       <BackgroundText>AIR-STELLA</BackgroundText>
       <ProductContainer>
         {products.map((product, idx) => (
