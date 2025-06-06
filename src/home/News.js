@@ -135,6 +135,11 @@ const Link = styled.a`
   }
 `;
 
+const Anchor = styled.div`
+  scroll-margin-top: 80px; // 헤더 높이 + 여유
+  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+`;
+
 // 컴포넌트
 const News = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -150,31 +155,33 @@ const News = () => {
   const currentNews = newsList[currentIndex];
 
   return (
-    <Container id="news">
-      <SectionTitle>NEWS</SectionTitle>
-      <SlideWrapper>
-        <Arrow left onClick={prev}>
-          <FiChevronLeft size={24} color="#000" />
-        </Arrow>
+    <Anchor id="news">
+      <Container>
+        <SectionTitle>NEWS</SectionTitle>
+        <SlideWrapper>
+          <Arrow left onClick={prev}>
+            <FiChevronLeft size={24} color="#000" />
+          </Arrow>
 
-        <ContentWrapper>
-          <Img src={currentNews.img} alt="뉴스 이미지" />
-          <NewsTitle>{currentNews.title}</NewsTitle>
-          <Summary>{currentNews.summary}</Summary>
-          <Link
-            href={currentNews.link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            뉴스 보러가기 <FiArrowRight />
-          </Link>
-        </ContentWrapper>
+          <ContentWrapper>
+            <Img src={currentNews.img} alt="뉴스 이미지" />
+            <NewsTitle>{currentNews.title}</NewsTitle>
+            <Summary>{currentNews.summary}</Summary>
+            <Link
+              href={currentNews.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              뉴스 보러가기 <FiArrowRight />
+            </Link>
+          </ContentWrapper>
 
-        <Arrow onClick={next}>
-          <FiChevronRight size={24} color="#000" />
-        </Arrow>
-      </SlideWrapper>
-    </Container>
+          <Arrow onClick={next}>
+            <FiChevronRight size={24} color="#000" />
+          </Arrow>
+        </SlideWrapper>
+      </Container>
+    </Anchor>
   );
 };
 

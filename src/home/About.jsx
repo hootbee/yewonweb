@@ -148,6 +148,10 @@ const SubImg = styled.img`
   object-fit: cover;
 `;
 
+const Anchor = styled.div`
+  scroll-margin-top: 80px; // 헤더 높이 + 여유
+  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+`;
 const About = () => {
   const [inView, setInView] = useState({});
   const refs = useRef([]);
@@ -179,9 +183,8 @@ const About = () => {
   }, []);
 
   return (
-    <>
+    <Anchor id="about">
       <MainImgWrapper
-        id="about"
         ref={(el) => (refs.current[0] = el)}
         data-index={0}
         inView={inView[0]}
@@ -189,7 +192,7 @@ const About = () => {
         <Img src={img1} />
         <MainImgContent>HUMAN AI PLUS와 함께</MainImgContent>
       </MainImgWrapper>
-    </>
+    </Anchor>
   );
 };
 

@@ -85,7 +85,7 @@ const CircleContainer = styled.div`
 const CenterImage = styled.div`
   width: 200px;
   height: 200px;
-  background: url('/images/lock-knob.png') no-repeat center/cover;
+  background: url("/images/lock-knob.png") no-repeat center/cover;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -136,11 +136,14 @@ const DotLabel = styled.div`
 const offerings = [
   {
     title: "NLP\n&\n sLLM",
-    skills: ["BERT, BiLSTM, Transformer 등", "최신 딥러닝 모델을 활용한 자연어 처리"],
+    skills: [
+      "BERT, BiLSTM, Transformer 등",
+      "최신 딥러닝 모델을 활용한 자연어 처리",
+    ],
     applications: [
       "SLM 기반의 의료 진단 보고서 분석",
       "이미지와 텍스트 결합을 통한 정보 추출",
-      "대규모 텍스트 데이터 분석 및 분류"
+      "대규모 텍스트 데이터 분석 및 분류",
     ],
     // 하단 (200, 400) 부근 - 점과 라벨 간격 조정
     top: "395px",
@@ -152,12 +155,12 @@ const offerings = [
     title: "Deep Learning\n& Machine Learning",
     skills: [
       "전이 학습과 Learning Without Forgetting(LwF), COVID-19 진단",
-      "다양한 상황에서 머신러닝 최적화 및 자율 시스템"
+      "다양한 상황에서 머신러닝 최적화 및 자율 시스템",
     ],
     applications: [
       "의료 영상 분석, 질병 예측 및 진단, 병원에서의 AI",
       "스마트 헬스케어 및 원격 진료 시스템",
-      "스마트 시티 및 자율 시스템"
+      "스마트 시티 및 자율 시스템",
     ],
     // 우측 (400, 200) 부근 - 점과 라벨 간격 조정 (너무 멀지 않게)
     top: "200px",
@@ -170,7 +173,7 @@ const offerings = [
     skills: ["LSTM, Autoregressive 모델", "시계열 예측 알고리즘"],
     applications: [
       "환경 데이터 분석",
-      "웨어러블 디바이스로 수집된 건강 데이터의 예측 분석"
+      "웨어러블 디바이스로 수집된 건강 데이터의 예측 분석",
     ],
     // 상단 (200, 0) 부근 - 점과 라벨 간격 조정
     top: "5px",
@@ -183,7 +186,7 @@ const offerings = [
     skills: ["CNN, Autoencoder", "다중 모달 학습 알고리즘"],
     applications: [
       "이미지, 텍스트, 모션, 신체 신호 등",
-      "센서 데이터 통합 분석을 통한 환경 및 건강 데이터 처리"
+      "센서 데이터 통합 분석을 통한 환경 및 건강 데이터 처리",
     ],
     // 좌측 (0, 200) 부근 - 점과 라벨 간격 조정
     top: "200px",
@@ -231,13 +234,17 @@ const NlpCircular = () => {
           <RotatingGroup $rotateDeg={rotateDeg}>
             {offerings.map((item, idx) => (
               <React.Fragment key={idx}>
-                <Dot top={item.top} left={item.left} $active={currentIndex === idx} />
+                <Dot
+                  top={item.top}
+                  left={item.left}
+                  $active={currentIndex === idx}
+                />
                 <DotLabel
                   top={item.labelTop}
                   left={item.labelLeft}
                   $isActive={currentIndex === idx}
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`
+                    transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`,
                   }}
                 >
                   {item.title}

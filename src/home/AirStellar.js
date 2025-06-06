@@ -66,6 +66,11 @@ const Price = styled.p`
   margin: 2px 0;
 `;
 
+const Anchor = styled.div`
+  scroll-margin-top: 80px; // 헤더 높이 + 여유
+  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+`;
+
 const AirStellar = () => {
   const products = [
     {
@@ -81,19 +86,21 @@ const AirStellar = () => {
   ];
 
   return (
-    <Wrapper id="airStellar">
-      <BackgroundText>AIR-STELLA</BackgroundText>
-      <ProductContainer>
-        {products.map((product, idx) => (
-          <Product key={idx}>
-            <ProductImage src={objectImg} alt={product.name} />
-            <ProductName>{product.name}</ProductName>
-            <Brand>{product.brand}</Brand>
-            <Price>{product.price}</Price>
-          </Product>
-        ))}
-      </ProductContainer>
-    </Wrapper>
+    <Anchor id="airStellar">
+      <Wrapper>
+        <BackgroundText>AIR-STELLA</BackgroundText>
+        <ProductContainer>
+          {products.map((product, idx) => (
+            <Product key={idx}>
+              <ProductImage src={objectImg} alt={product.name} />
+              <ProductName>{product.name}</ProductName>
+              <Brand>{product.brand}</Brand>
+              <Price>{product.price}</Price>
+            </Product>
+          ))}
+        </ProductContainer>
+      </Wrapper>
+    </Anchor>
   );
 };
 
