@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import objectImg from "../img/static.png"; // 이미지 경로 주의
+import AirStellarModal1 from "./popup/AirStellarModal";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -72,35 +74,47 @@ const Anchor = styled.div`
 `;
 
 const AirStellar = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const products = [
     {
       name: "Air Stella No.1",
       brand: "STATIC",
       price: "From ฿600 per month",
+      img: objectImg,
     },
     {
       name: "Air Stella No.2",
       brand: "WEARABLE",
       price: "From ฿1400 per month",
+      img: objectImg,
     },
   ];
 
   return (
-    <Anchor id="airStellar">
+    <>
+      <Anchor id="airStellar" />
       <Wrapper>
         <BackgroundText>AIR-STELLA</BackgroundText>
         <ProductContainer>
           {products.map((product, idx) => (
-            <Product key={idx}>
-              <ProductImage src={objectImg} alt={product.name} />
+            <Product key={idx} onClick={() => setSelectedProduct(product)}>
+              <ProductImage src={product.img} alt={product.name} />
               <ProductName>{product.name}</ProductName>
               <Brand>{product.brand}</Brand>
               <Price>{product.price}</Price>
             </Product>
           ))}
         </ProductContainer>
+        {/* ✅ 팝업 표시 조건 */}
+        {selectedProduct && (
+          <AirStellarModal1
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+          />
+        )}
       </Wrapper>
-    </Anchor>
+    </>
   );
 };
 
