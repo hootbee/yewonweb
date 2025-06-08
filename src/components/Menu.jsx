@@ -7,10 +7,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 const MenuWrapper = styled.div`
   flex: 1;
   max-width: 800px;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
+
   a {
     text-decoration: none;
   }
@@ -22,6 +24,18 @@ const MenuWrapper = styled.div`
 
   a:hover {
     color: gray;
+  }
+
+  h5 {
+    font-size: 16px; // ✅ 원하는 크기로 조절 (기본 h5는 0.83em ≒ 13.3px)
+    margin: 0;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h5 {
+      font-size: 16px; // ✅ 모바일 대응
+    }
   }
 `;
 
