@@ -18,7 +18,7 @@ const BackgroundText = styled.div`
   left: 50%;
   transform: translateX(-50%);
   font-family: "Playfair Display", serif;
-  font-size: 240px;
+  font-size: 300px;
   font-weight: 300;
   color: #3d3d1f;
   opacity: 0.15;
@@ -53,18 +53,18 @@ const ProductImage = styled.img`
 `;
 
 const ProductName = styled.h3`
-  font-size: 20px;
+  font-size: 36px;
   margin: 6px 0;
 `;
 
 const Brand = styled.p`
-  font-size: 15px;
+  font-size: 32px;
   color: gray;
   margin: 2px 0;
 `;
 
 const Price = styled.p`
-  font-size: 15px;
+  font-size: 20px;
   color: #333;
   margin: 2px 0;
 `;
@@ -144,6 +144,45 @@ const InfoPanel = styled.div`
   justify-content: center;
   animation: slideIn 1s ease forwards;
 
+  /* ✅ 여기부터 추가하세요 */
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+  }
+
+  th, td {
+    font-size: 20px;     /*  표 글씨 크기 여기서 조정 */
+    text-align: center;  /*  가운데 정렬 유지 */
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+    width: 35%;
+  }
+
+  /* 애니메이션 */
   .closing & {
     animation: slideOut 1s ease forwards;
   }
@@ -271,7 +310,7 @@ const AirStellar = () => {
                       <tr key={idx}>
                         <th
                           style={{
-                            textAlign: "left",
+                            textAlign: "center",
                             padding: "8px",
                             border: "1px solid #ccc",
                             background: "#f0f0f0",
