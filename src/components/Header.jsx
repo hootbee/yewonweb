@@ -26,8 +26,10 @@ const HeaderWrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  height: clamp(40px, 8vh, 60px); // ✅ 로고도 반응형으로
+  height: clamp(40px, 8vh, 60px);
   width: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
 `;
 
 const Header = () => {
