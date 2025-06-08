@@ -74,8 +74,6 @@ const Anchor = styled.div`
   height: 0;
 `;
 
-/* ======= 슬라이딩 상세 보기 영역 ======= */
-
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
@@ -131,11 +129,10 @@ const SlidingImage = styled.div`
   img {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     width: 70%;
     height: auto;
     top: 50%;
-    transform: translate(-50%, -50%);
   }
 `;
 
@@ -241,10 +238,53 @@ const AirStellar = () => {
                 <h2>{selectedProduct.name}</h2>
                 <h4>{selectedProduct.brand}</h4>
                 <p>{selectedProduct.price}</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur in est sit amet eros tincidunt viverra nec ut justo.
-                </p>
+                <table style={{ marginTop: "24px", borderCollapse: "collapse", width: "100%" }}>
+                  <tbody>
+                    {(selectedProduct.name.includes("No.1")
+                      ? [
+                          ["환경측정", "온도, 습도, 소음, 조도, 라돈"],
+                          ["가스측정", "이산화탄소(1등급), VOC, 포름알데히드, 황화수소, 이산화질소, 일산화탄소, 오존, 암모니아"],
+                          ["동작온도", "-20 ~ 50℃"],
+                          ["아답터", "12V, 3A"],
+                          ["데이터표시", "LCD 패널, PC 프로그램 및 Mobile 프로그램"],
+                          ["데이터저장", "서버 전송 저장"],
+                          ["상태표시", "4색 LED로 상태표시"],
+                          ["전송방식", "BLE, WIFI, LAN, RS485, USB, C-TYPE"],
+                          ["크기", "152mm * 183mm * 38mm"],
+                          ["무게", "550g"],
+                          ["제품적용", "쉘터, 어린이집, 병원, 학교, 지하도 등 다양한 실내공간"],
+                        ]
+                      : [
+                          ["환경측정", "온도, 습도, 소음, 조도"],
+                          ["가스측정", "이산화탄소(1등급), VOC, 포름알데히드, 일산화탄소, 오존, 암모니아"],
+                          ["동작온도", "-20 ~ 50℃"],
+                          ["아답터", "16V, 4.5A"],
+                          ["데이터표시", "PC 프로그램 및 Mobile 프로그램"],
+                          ["데이터저장", "서버 전송 저장"],
+                          ["상태표시", "4색 LED로 상태표시"],
+                          ["전송방식", "BLE, WIFI, LAN, RS485, USB, C-TYPE"],
+                          ["크기", "138mm * 154mm * 38mm"],
+                          ["무게", "380g (배터리 제외)"],
+                          ["제품적용", "쉘터, 어린이집, 병원, 학교, 지하도 등 다양한 실내공간"],
+                        ]
+                    ).map(([label, value], idx) => (
+                      <tr key={idx}>
+                        <th
+                          style={{
+                            textAlign: "left",
+                            padding: "8px",
+                            border: "1px solid #ccc",
+                            background: "#f0f0f0",
+                            width: "35%",
+                          }}
+                        >
+                          {label}
+                        </th>
+                        <td style={{ padding: "8px", border: "1px solid #ccc" }}>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </InfoPanel>
             </InnerZone>
           </Overlay>
