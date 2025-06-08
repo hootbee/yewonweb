@@ -68,11 +68,6 @@ const Price = styled.p`
   margin: 2px 0;
 `;
 
-const Anchor = styled.div`
-  scroll-margin-top: 80px; // 헤더 높이 + 여유
-  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
-`;
-
 const AirStellar = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -93,8 +88,7 @@ const AirStellar = () => {
 
   return (
     <>
-      <Anchor id="airStellar" />
-      <Wrapper>
+      <Wrapper id="airStellar">
         <BackgroundText>AIR-STELLA</BackgroundText>
         <ProductContainer>
           {products.map((product, idx) => (

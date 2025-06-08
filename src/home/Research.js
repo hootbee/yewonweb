@@ -11,12 +11,9 @@ const Anchor = styled.div`
 
 const Research = () => {
   return (
-    <Anchor id="research">
-      <div>
-        <Nlp />
-      </div>
-      /
-    </Anchor>
+    <div>
+      <Nlp />
+    </div>
   );
 };
 

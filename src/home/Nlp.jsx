@@ -211,7 +211,7 @@ const NlpCircular = () => {
   const current = offerings[currentIndex];
 
   return (
-    <Wrapper id="nlp">
+    <Wrapper id="research">
       <Inner>
         <LeftContent>
           <Title>{current.title}</Title>

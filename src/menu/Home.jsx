@@ -4,6 +4,7 @@ import About from "../home/About";
 import Gradation from "../home/Gradation";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import Research from "../home/Research";
 
 // 스크롤 스냅 적용을 위한 전체 컨테이너
 const ScrollSnapContainer = styled.div`
@@ -22,17 +23,11 @@ const SnapSection = styled.section`
 
 const Home = () => {
   return (
-    <ScrollSnapContainer>
-      <SnapSection>
-        <About />
-      </SnapSection>
-      <SnapSection>
-        <Gradation />
-      </SnapSection>
-      {/* <SnapSection>
-        <Footer />
-      </SnapSection> */}
-    </ScrollSnapContainer>
+    <>
+      <About />
+      <Research />
+      <Gradation />
+    </>
   );
 };
 
