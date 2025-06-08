@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import objectImg from "../img/static.png"; // 이미지 경로 주의
-import AirStellarModal1 from "./popup/AirStellarModal";
-import { useState } from "react";
+import objectImg from "../img/static.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,6 +9,7 @@ const Wrapper = styled.div`
   position: relative;
   padding: 100px 20px;
   box-sizing: border-box;
+  overflow-x: hidden;
 `;
 
 const BackgroundText = styled.div`
@@ -32,8 +31,8 @@ const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 120px; // ✅ 그대로 유지
-  margin-top: 340px; // ✅ 이미지가 커졌으니 여백 살짝 늘림
+  gap: 120px;
+  margin-top: 340px;
   z-index: 1;
   position: relative;
 `;
@@ -43,12 +42,14 @@ const Product = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  cursor: pointer;
 `;
 
 const ProductImage = styled.img`
-  width: 550px; // ✅ 더 크게
+  width: 550px;
   height: auto;
-  margin-bottom: 24px; // 살짝 여유
+  margin-bottom: 24px;
+  transition: transform 0.5s ease;
 `;
 
 const ProductName = styled.h3`
@@ -69,12 +70,133 @@ const Price = styled.p`
 `;
 
 const Anchor = styled.div`
-  scroll-margin-top: 80px; // 헤더 높이 + 여유
-  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+  scroll-margin-top: 80px;
+  height: 0;
+`;
+
+/* ======= 슬라이딩 상세 보기 영역 ======= */
+
+const Overlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.96);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerZone = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  &.closing {
+    pointer-events: none;
+  }
+`;
+
+const SlidingImage = styled.div`
+  flex: 1;
+  position: relative;
+  animation: none;
+
+  &.entering {
+    animation: slideFromCenter 1s ease forwards;
+  }
+
+  &.closing {
+    animation: slideLeftOut 1s ease forwards;
+  }
+
+  @keyframes slideFromCenter {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-10%);
+    }
+  }
+
+  @keyframes slideLeftOut {
+    from {
+      transform: translateX(-10%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const InfoPanel = styled.div`
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: slideIn 1s ease forwards;
+
+  .closing & {
+    animation: slideOut 1s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(20%);
+    }
+  }
 `;
 
 const AirStellar = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+  const [isEntering, setIsEntering] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = selectedProduct ? "hidden" : "auto";
+  }, [selectedProduct]);
+
+  const handleOpen = (product) => {
+    setSelectedProduct(product);
+    setIsEntering(false);
+    setTimeout(() => setIsEntering(true), 50);
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedProduct(null);
+      setIsClosing(false);
+      setIsEntering(false);
+    }, 1000);
+  };
 
   const products = [
     {
@@ -98,7 +220,7 @@ const AirStellar = () => {
         <BackgroundText>AIR-STELLA</BackgroundText>
         <ProductContainer>
           {products.map((product, idx) => (
-            <Product key={idx} onClick={() => setSelectedProduct(product)}>
+            <Product key={idx} onClick={() => handleOpen(product)}>
               <ProductImage src={product.img} alt={product.name} />
               <ProductName>{product.name}</ProductName>
               <Brand>{product.brand}</Brand>
@@ -106,12 +228,27 @@ const AirStellar = () => {
             </Product>
           ))}
         </ProductContainer>
-        {/* ✅ 팝업 표시 조건 */}
+
         {selectedProduct && (
-          <AirStellarModal1
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-          />
+          <Overlay onClick={handleClose}>
+            <InnerZone className={isClosing ? "closing" : ""}>
+              <SlidingImage
+                onClick={handleClose}
+                className={`${isEntering ? "entering" : ""} ${isClosing ? "closing" : ""}`}
+              >
+                <img src={selectedProduct.img} alt={selectedProduct.name} />
+              </SlidingImage>
+              <InfoPanel onClick={(e) => e.stopPropagation()}>
+                <h2>{selectedProduct.name}</h2>
+                <h4>{selectedProduct.brand}</h4>
+                <p>{selectedProduct.price}</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Curabitur in est sit amet eros tincidunt viverra nec ut justo.
+                </p>
+              </InfoPanel>
+            </InnerZone>
+          </Overlay>
         )}
       </Wrapper>
     </>
