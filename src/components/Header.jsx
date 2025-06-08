@@ -5,27 +5,29 @@ import styled from "styled-components";
 import logo from "../img/logo.png";
 import Menu from "./Menu";
 
+// Header.jsx
 const HeaderWrapper = styled.div`
-  position: fixed; /* 고정 위치 */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* 다른 요소보다 위에 표시 */
+  z-index: 1000;
   width: 100%;
-  height: 70px;
+  height: clamp(60px, 8vh, 90px); // ✅ 작은 화면에서도 높이 확보
   background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 선택: 그림자 효과 */
+  padding: 0 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 `;
 
 const Logo = styled.img`
-  padding: 0;
-  margin: 0;
-  margin-left: 20px;
-  height: 60px;
-  width: 100px;
-  margin-top: 5px;
+  height: clamp(40px, 8vh, 60px); // ✅ 로고도 반응형으로
+  width: auto;
 `;
 
 const Header = () => {
