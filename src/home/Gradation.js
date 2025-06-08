@@ -35,26 +35,13 @@ const SnapSection = styled.section`
 const Gradation = () => {
   return (
     <>
-      <SnapSection>
-        <Research />
-      </SnapSection>
       <GradientBackground>
         <SectionWrapper>
-          <SnapSection>
-            <MedicalAi />
-          </SnapSection>
-          <SnapSection>
-            <Environment />
-          </SnapSection>
-          <SnapSection>
-            <AirStellar />
-          </SnapSection>
-          <SnapSection>
-            <News />
-          </SnapSection>
-          <SnapSection>
-            <Ceo />
-          </SnapSection>
+          <MedicalAi />
+          <Environment />
+          <AirStellar />
+          <News />
+          <Ceo />
           <Footer /> {/* ✅ SnapSection 없이 자연스럽게 Ceo 아래에 배치 */}
         </SectionWrapper>
       </GradientBackground>

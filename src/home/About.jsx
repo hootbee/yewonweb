@@ -54,104 +54,6 @@ const MainImgContent = styled.div`
   }
 `;
 
-const MainWrapper = styled.div`
-  width: 100%;
-  height: 200px;
-  background: #252525;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const MainTitle = styled.p`
-  width: calc(85%);
-  font: bold 35px "arial";
-  color: white;
-  border-bottom: 1px solid white;
-  padding: 0;
-  margin: 40px 0 0 0;
-  padding-bottom: 10px;
-  @media screen and (min-width: 768px) {
-    width: calc(70%);
-  }
-`;
-
-const MainContent = styled.p`
-  width: calc(85%);
-  font: 600 12px "arial";
-  color: white;
-  margin: 0;
-  padding: 0;
-  padding-top: 15px;
-  @media screen and (min-width: 768px) {
-    width: calc(70%);
-  }
-`;
-
-const SubContainer = styled.div`
-  margin: 0 25px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 768px) {
-    margin: 0 170px;
-  }
-`;
-
-const SubWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  margin: 20px 0;
-  padding: 0;
-  animation: ${({ inView }) => (inView ? slideUp : "none")} 1s ease-out;
-  @media screen and (min-width: 768px) {
-    margin: 20px 10px;
-  }
-`;
-
-const SubWrapper2 = styled.div`
-  margin: 0;
-  padding: 0;
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-const SubWrapper3 = styled.div`
-  padding: 0;
-  margin: 0;
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const SubTitle = styled.p`
-  color: black;
-  font: bold 20px "arial";
-  margin: 10px 20px;
-  padding: 0;
-`;
-
-const SubContent = styled.p`
-  color: black;
-  font: 500 13px "arial";
-  margin: 10px 20px;
-  padding: 0;
-`;
-
-const SubImg = styled.img`
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-`;
-
-const Anchor = styled.div`
-  scroll-margin-top: 80px; // 헤더 높이 + 여유
-  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
-`;
 const About = () => {
   const [inView, setInView] = useState({});
   const refs = useRef([]);
@@ -183,16 +85,15 @@ const About = () => {
   }, []);
 
   return (
-    <Anchor id="about">
-      <MainImgWrapper
-        ref={(el) => (refs.current[0] = el)}
-        data-index={0}
-        inView={inView[0]}
-      >
-        <Img src={img1} />
-        <MainImgContent>HUMAN AI PLUS와 함께</MainImgContent>
-      </MainImgWrapper>
-    </Anchor>
+    <MainImgWrapper
+      id="about"
+      ref={(el) => (refs.current[0] = el)}
+      data-index={0}
+      inView={inView[0]}
+    >
+      <Img src={img1} />
+      <MainImgContent>HUMAN AI PLUS와 함께</MainImgContent>
+    </MainImgWrapper>
   );
 };
 

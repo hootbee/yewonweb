@@ -155,33 +155,31 @@ const News = () => {
   const currentNews = newsList[currentIndex];
 
   return (
-    <Anchor id="news">
-      <Container>
-        <SectionTitle>NEWS</SectionTitle>
-        <SlideWrapper>
-          <Arrow left onClick={prev}>
-            <FiChevronLeft size={24} color="#000" />
-          </Arrow>
+    <Container id="news">
+      <SectionTitle>NEWS</SectionTitle>
+      <SlideWrapper>
+        <Arrow left onClick={prev}>
+          <FiChevronLeft size={24} color="#000" />
+        </Arrow>
 
-          <ContentWrapper>
-            <Img src={currentNews.img} alt="뉴스 이미지" />
-            <NewsTitle>{currentNews.title}</NewsTitle>
-            <Summary>{currentNews.summary}</Summary>
-            <Link
-              href={currentNews.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              뉴스 보러가기 <FiArrowRight />
-            </Link>
-          </ContentWrapper>
+        <ContentWrapper>
+          <Img src={currentNews.img} alt="뉴스 이미지" />
+          <NewsTitle>{currentNews.title}</NewsTitle>
+          <Summary>{currentNews.summary}</Summary>
+          <Link
+            href={currentNews.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            뉴스 보러가기 <FiArrowRight />
+          </Link>
+        </ContentWrapper>
 
-          <Arrow onClick={next}>
-            <FiChevronRight size={24} color="#000" />
-          </Arrow>
-        </SlideWrapper>
-      </Container>
-    </Anchor>
+        <Arrow onClick={next}>
+          <FiChevronRight size={24} color="#000" />
+        </Arrow>
+      </SlideWrapper>
+    </Container>
   );
 };
 
