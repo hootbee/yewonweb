@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import objectImg from "../img/static.png";
+import wearableImg from "../img/wearable.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -46,9 +47,15 @@ const Product = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 420px;
+  width: ${(props) =>
+    props.productName.includes("No.1")
+      ? "500px"
+      : props.productName.includes("No.2")
+      ? "220px"
+      : "400px"};
   height: auto;
-  margin-bottom: 24px;
+  margin-bottom: ${(props) =>
+    props.productName.includes("No.2") ? "60px" : "24px"};
   transition: transform 0.5s ease;
 `;
 
@@ -98,7 +105,6 @@ const InnerZone = styled.div`
 const SlidingImage = styled.div`
   flex: 1;
   position: relative;
-  animation: none;
 
   &.entering {
     animation: slideFromCenter 1s ease forwards;
@@ -106,6 +112,16 @@ const SlidingImage = styled.div`
 
   &.closing {
     animation: slideLeftOut 1s ease forwards;
+  }
+
+  img {
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: ${({ productName }) =>
+      productName.includes("No.1") ? "150%" : "80%"};
+    height: auto;
   }
 
   @keyframes slideFromCenter {
@@ -125,15 +141,6 @@ const SlidingImage = styled.div`
       transform: translateX(100%);
     }
   }
-
-  img {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: auto;
-    top: 50%;
-  }
 `;
 
 const InfoPanel = styled.div`
@@ -144,7 +151,6 @@ const InfoPanel = styled.div`
   justify-content: center;
   animation: slideIn 1s ease forwards;
 
-  /* ✅ 여기부터 추가하세요 */
   h2 {
     font-size: 36px;
     font-weight: 700;
@@ -245,7 +251,7 @@ const AirStellar = () => {
       name: "Air Stella No.2",
       brand: "WEARABLE",
       price: "From ฿1400 per month",
-      img: objectImg,
+      img: wearableImg,
     },
   ];
 
@@ -256,7 +262,11 @@ const AirStellar = () => {
         <ProductContainer>
           {products.map((product, idx) => (
             <Product key={idx} onClick={() => handleOpen(product)}>
-              <ProductImage src={product.img} alt={product.name} />
+              <ProductImage
+  src={product.img}
+  alt={product.name}
+  productName={product.name}
+/>
               <ProductName>{product.name}</ProductName>
               <Brand>{product.brand}</Brand>
               <Price>{product.price}</Price>
@@ -268,11 +278,12 @@ const AirStellar = () => {
           <Overlay onClick={handleClose}>
             <InnerZone className={isClosing ? "closing" : ""}>
               <SlidingImage
-                onClick={handleClose}
-                className={`${isEntering ? "entering" : ""} ${isClosing ? "closing" : ""}`}
-              >
-                <img src={selectedProduct.img} alt={selectedProduct.name} />
-              </SlidingImage>
+  productName={selectedProduct.name}
+  onClick={handleClose}
+  className={`${isEntering ? "entering" : ""} ${isClosing ? "closing" : ""}`}
+>
+  <img src={selectedProduct.img} alt={selectedProduct.name} />
+</SlidingImage>
               <InfoPanel onClick={(e) => e.stopPropagation()}>
                 <h2>{selectedProduct.name}</h2>
                 <h4>{selectedProduct.brand}</h4>

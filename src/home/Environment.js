@@ -134,7 +134,7 @@ const ArrowIcon = styled(FiArrowRight)`
 `;
 
 const CardText = styled.div`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 1.4;
   white-space: pre-line;
