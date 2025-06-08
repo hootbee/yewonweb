@@ -64,14 +64,6 @@ const Menu = () => {
         <h5>CEO</h5>
       </a>
 
-      <a href="#ceo">
-        <h5>CEO</h5>
-      </a>
-
-      <a href="#article">
-        <h5>ARTICLE</h5>
-      </a>
-
       <a href="#contact">
         <h5>CONTACT</h5>
       </a>
