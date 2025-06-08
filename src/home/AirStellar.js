@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import objectImg from "../img/static.png"; // 이미지 경로 주의
+import objectImg from "../img/static.png"; 
 
 const Wrapper = styled.div`
   width: 100%;
@@ -30,8 +30,8 @@ const ProductContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 120px;          // ✅ 그대로 유지
-  margin-top: 340px;   // ✅ 이미지가 커졌으니 여백 살짝 늘림
+  gap: 120px;          // 그대로 유지
+  margin-top: 340px;   // 이미지가 커졌으니 여백 살짝 늘림
   z-index: 1;
   position: relative;
 `;
@@ -44,7 +44,7 @@ const Product = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 400px;       // ✅ 더 크게
+  width: 400px;       // 더 크게
   height: auto;
   margin-bottom: 24px; // 살짝 여유
 `;
