@@ -46,7 +46,7 @@ const Product = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 400px; // ✅ 더 크게
+  width: 550px; // ✅ 더 크게
   height: auto;
   margin-bottom: 24px; // 살짝 여유
 `;
