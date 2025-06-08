@@ -83,37 +83,44 @@ const ViewButton = styled.a`
 `;
 
 const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  display: flex;
   gap: 20px;
   width: 100%;
-  max-width: 1200px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
+
 const Card = styled.div`
+  flex: 0 0 230px;
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px;
   height: 200px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  overflow: hidden;
+  scroll-snap-align: start;
 
   &:hover {
     transform: scale(1.03);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
   }
 `;
 

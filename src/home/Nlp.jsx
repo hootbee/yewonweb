@@ -36,7 +36,6 @@ const Title = styled.h2`
   position: relative;
   font-size: 40px;
   font-weight: bold;
-  color: #9AD4FF; // 연한 하늘색
   margin-bottom: 16px;
   `;
 
