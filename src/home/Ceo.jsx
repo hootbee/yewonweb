@@ -5,7 +5,7 @@ import ceoImg from "../img/prof.png";
 const Container = styled.div`
   background: #ffffff;
   min-height: 100vh;
-  padding: 80px 20px;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
 const PhotoBox = styled.div`
   width: 40%;
   max-width: 400px;
+  margin-top: 40px;
 
   img {
     width: 100%;
@@ -40,6 +41,7 @@ const PhotoBox = styled.div`
 
   @media (max-width: 768px) {
     width: 80%;
+    margin-top: 20px;
   }
 `;
 
@@ -131,8 +133,8 @@ const Section = styled.div`
 `;
 
 const Anchor = styled.div`
-  scroll-margin-top: 80px; // 헤더 높이 + 여유
-  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+  scroll-margin-top: 80px;
+  height: 0;
 `;
 
 const CEOProfile = () => {
@@ -163,11 +165,15 @@ const CEOProfile = () => {
           <Section>
             <h4>주요 활동</h4>
             <ul>
-              <li>보건복지부 GFID 위원장</li>
-              <li>산업부 AI 반도체·센서 R&D 위원장</li>
-              <li>과기정통부 패키지 AI 위원장</li>
-              <li>스마트시티/SBAS 위원 (국토부)</li>
               <li>2024 환경 R&D 우수성과 20선 선정</li>
+              <li>
+                보건복지부(감염병 대응위원회)
+                <br />· 과학기술정보통신부(인공지능위원회)
+                <br />· 산업통상자원부(제조AI위원회) 등 주요 위원 및 위원장 활동
+              </li>
+              <li>국가적 감염병 대응 전략 수립 기여</li>
+              <li>한국과학기술평가원(KISTEP) 예비타당성 PM</li>
+              <li>IEEE ICDM ETDLH Workshop Chairman</li>
             </ul>
           </Section>
         </InfoBox>
