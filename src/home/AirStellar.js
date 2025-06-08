@@ -14,11 +14,11 @@ const Wrapper = styled.div`
 
 const BackgroundText = styled.div`
   position: absolute;
-  top: 80px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   font-family: "Playfair Display", serif;
-  font-size: 300px;
+  font-size: 230px;
   font-weight: 300;
   color: #3d3d1f;
   opacity: 0.15;
@@ -32,7 +32,7 @@ const ProductContainer = styled.div`
   justify-content: center;
   align-items: flex-end;
   gap: 120px;
-  margin-top: 340px;
+  margin-top: 200px;
   z-index: 1;
   position: relative;
 `;
@@ -46,25 +46,25 @@ const Product = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 550px;
+  width: 420px;
   height: auto;
   margin-bottom: 24px;
   transition: transform 0.5s ease;
 `;
 
 const ProductName = styled.h3`
-  font-size: 36px;
+  font-size: 24px;
   margin: 6px 0;
 `;
 
 const Brand = styled.p`
-  font-size: 32px;
+  font-size: 20px;
   color: gray;
   margin: 2px 0;
 `;
 
 const Price = styled.p`
-  font-size: 20px;
+  font-size: 15px;
   color: #333;
   margin: 2px 0;
 `;
@@ -170,7 +170,7 @@ const InfoPanel = styled.div`
   }
 
   th, td {
-    font-size: 20px;     /*  표 글씨 크기 여기서 조정 */
+    font-size: 15px;     /*  표 글씨 크기 여기서 조정 */
     text-align: center;  /*  가운데 정렬 유지 */
     padding: 12px 16px;
     border: 1px solid #ccc;
