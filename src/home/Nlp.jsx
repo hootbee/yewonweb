@@ -174,7 +174,11 @@ const offerings = [
   },
   {
     title: "Time Series\nData",
-    skills: ["LSTM, Autoregressive 모델", "시계열 예측 알고리즘"],
+    skills: [
+      "PatchTST / TimeLLM",
+      "LSTM/BiLSTM",
+      "Self-supervised learning",
+      "Multivariate Time Series Analysis"],
     applications: [
       "환경 데이터 분석",
       "웨어러블 디바이스로 수집된 건강 데이터의 예측 분석",
@@ -186,10 +190,16 @@ const offerings = [
   },
   {
     title: "AI Agent\n&\nMultimodal",
-    skills: ["CNN, Autoencoder", "다중 모달 학습 알고리즘"],
+    skills: [
+      "협동로봇 통합 제어 에이전트 설계", 
+      "품질 검사 및 예측을 위한 AI 기반 시각 인식 알고리즘", 
+      "예외 상황 탐지를 위한 멀티모달 이상 탐지 알고리즘", 
+      "전문가 피드백 반영 기반 모델 튜닝 및 성능 최적화"],
     applications: [
-      "이미지, 텍스트, 모션, 신체 신호 등",
-      "센서 데이터 통합 분석을 통한 환경 및 건강 데이터 처리",
+      "영상, 텍스트, 시계열, 센서 등 다양한 멀티모달 데이터 기반 통합 판단",
+      "제조 설비 환경에서의 협동로봇 품질 검사 및 예측",
+      "테스트 환경 구축 및 이상 상황 감지 자동화",
+      "실데이터 기반의 시스템 안정성 평가 및 연동 구조 점검",
     ],
     top: "200px",
     left: "0px",
