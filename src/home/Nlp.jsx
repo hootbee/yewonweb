@@ -33,9 +33,10 @@ const LeftContent = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 50px;
+  font-size: 64px;
   font-weight: bold;
   margin-bottom: 16px;
+  margin-left: -40px; // ✅ 왼쪽으로 약간 튀어나오게
 `;
 
 const DescriptionBlock = styled.div`
