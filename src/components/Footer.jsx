@@ -1,9 +1,9 @@
-// src/components/Footer.jsx
 import React from "react";
 import styled from "styled-components";
 
 const FooterWrapper = styled.footer`
   width: 100%;
+  box-sizing: border-box;
   background-color: #2c2c2c;
   color: white;
   padding: 40px 20px;
@@ -11,7 +11,8 @@ const FooterWrapper = styled.footer`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 100px;
+  overflow-x: hidden;
+  word-break: break-word;
 `;
 
 const FooterTitle = styled.h3`
@@ -35,15 +36,26 @@ const FooterLink = styled.a`
   }
 `;
 
+// ✅ 위치 기준만 잡아주는 invisible Anchor
+const ScrollAnchor = styled.div`
+  scroll-margin-top: 80px;
+  height: 0;
+`;
+
 const Footer = () => {
   return (
-    <FooterWrapper id="contact">
-      <FooterTitle>문의하기</FooterTitle>
-      <FooterText>이메일: support@quadstar.ai</FooterText>
-      <FooterText>전화: 02-1234-5678</FooterText>
-      <FooterText>서울특별시 성북구 미래로 101, 퀘드스타빌딩 5층</FooterText>
-      <FooterLink href="/support">고객지원 페이지 이동</FooterLink>
-    </FooterWrapper>
+    <>
+      <ScrollAnchor id="contact" />
+      <FooterWrapper>
+        <FooterTitle>문의하기</FooterTitle>
+        <FooterText>Email. humanai.plus@gmail.com</FooterText>
+        <FooterText>Tel. 063-270-4771</FooterText>
+        <FooterText>
+          Address. 전라북도 전주시 덕진구 백제대로 567 전북대학교 공학5호관
+          504-2호
+        </FooterText>
+      </FooterWrapper>
+    </>
   );
 };
 
