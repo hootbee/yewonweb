@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import digitalBrain from "../img/digital_brain.png";
 
 // 전체 배경 및 중앙 정렬
 const Wrapper = styled.div`
@@ -78,22 +79,24 @@ const CircleContainer = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 3px dashed rgba(255, 255, 255, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     top: 0;
     left: 0;
   }
 `;
 
-const CenterImage = styled.div`
-  width: 200px;
-  height: 200px;
-  background: url("/images/lock-knob.png") no-repeat center/cover;
-  border-radius: 50%;
+const CenterImage = styled.img`
+  width: 300px;              // ✔ 기존 200px → 확대
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;        // ✔ 부드러운 가장자리
+  transition: all 0.3s ease;
 `;
 
 const RotatingGroup = styled.div`
@@ -229,30 +232,30 @@ const NlpCircular = () => {
             </Ul>
           </DescriptionBlock>
         </LeftContent>
-        <CircleContainer>
-          <RotatingGroup $rotateDeg={rotateDeg}>
-            {offerings.map((item, idx) => (
-              <React.Fragment key={idx}>
-                <Dot
-                  top={item.top}
-                  left={item.left}
-                  $active={currentIndex === idx}
-                />
-                <DotLabel
-                  top={item.labelTop}
-                  left={item.labelLeft}
-                  $isActive={currentIndex === idx}
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`,
-                  }}
-                >
-                  {item.title}
-                </DotLabel>
-              </React.Fragment>
-            ))}
-          </RotatingGroup>
-          <CenterImage />
-        </CircleContainer>
+<CircleContainer>
+  <RotatingGroup $rotateDeg={rotateDeg}>
+    {offerings.map((item, idx) => (
+      <React.Fragment key={idx}>
+        <Dot
+          top={item.top}
+          left={item.left}
+          $active={currentIndex === idx}
+        />
+        <DotLabel
+          top={item.labelTop}
+          left={item.labelLeft}
+          $isActive={currentIndex === idx}
+          style={{
+            transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`,
+          }}
+        >
+          {item.title}
+        </DotLabel>
+      </React.Fragment>
+    ))}
+  </RotatingGroup>
+  <CenterImage src={digitalBrain} alt="Digital Brain" />
+</CircleContainer>
       </Inner>
     </Wrapper>
   );
