@@ -33,19 +33,19 @@ const LeftContent = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 36px;
+  font-size: 50px;
   font-weight: bold;
   margin-bottom: 16px;
 `;
 
 const DescriptionBlock = styled.div`
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.6;
   color: #e0e0e0;
 `;
 
 const SectionTitle = styled.h4`
-  font-size: 17px;
+  font-size: 27px;
   font-weight: bold;
   color: #ffffff;
   margin: 16px 0 8px;
@@ -75,7 +75,7 @@ const CircleContainer = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border: 4px dashed rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     top: 0;
     left: 0;
@@ -106,8 +106,8 @@ const RotatingGroup = styled.div`
 
 const Dot = styled.div`
   position: absolute;
-  width: ${({ $active }) => ($active ? "14px" : "8px")};
-  height: ${({ $active }) => ($active ? "14px" : "8px")};
+  width: ${({ $active }) => ($active ? "18px" : "8px")};
+  height: ${({ $active }) => ($active ? "18px" : "8px")};
   background: ${({ $active }) => ($active ? "#3da5ff" : "#ffffff88")};
   border: ${({ $active }) => ($active ? "4px solid #3da5ff" : "none")};
   border-radius: 50%;
@@ -129,7 +129,7 @@ const DotLabel = styled.div`
   top: ${({ top }) => top};
   left: ${({ left }) => left};
   transition: all 0.3s ease;
-  font-size: ${({ $isActive }) => ($isActive ? "22px" : "14px")};
+  font-size: ${({ $isActive }) => ($isActive ? "32px" : "24px")};
   font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;
 
@@ -148,7 +148,7 @@ const offerings = [
     // 하단 (200, 400) 부근 - 점과 라벨 간격 조정
     top: "395px",
     left: "200px",
-    labelTop: "450px", // 455px -> 450px (조금 더 가까이)
+    labelTop: "490px", // 455px -> 450px (조금 더 가까이)
     labelLeft: "200px",
   },
   {
@@ -166,7 +166,7 @@ const offerings = [
     top: "200px",
     left: "395px",
     labelTop: "200px",
-    labelLeft: "460px", // 500px -> 460px (점과 가깝게)
+    labelLeft: "490px", // 500px -> 460px (점과 가깝게)
   },
   {
     title: "Time Series Data",
@@ -178,7 +178,7 @@ const offerings = [
     // 상단 (200, 0) 부근 - 점과 라벨 간격 조정
     top: "5px",
     left: "200px",
-    labelTop: "-50px", // -55px -> -50px (조금 더 가까이)
+    labelTop: "-100px", // -55px -> -50px (조금 더 가까이)
     labelLeft: "200px",
   },
   {
