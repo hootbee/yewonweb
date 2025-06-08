@@ -215,8 +215,7 @@ const AirStellar = () => {
 
   return (
     <>
-      <Anchor id="airStellar" />
-      <Wrapper>
+      <Wrapper id="airStellar">
         <BackgroundText>AIR-STELLA</BackgroundText>
         <ProductContainer>
           {products.map((product, idx) => (

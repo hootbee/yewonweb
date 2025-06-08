@@ -26,10 +26,15 @@ const MenuWrapper = styled.div`
     color: gray;
   }
 
+  // Menu.jsx
   h5 {
-    font-size: 16px; // ✅ 원하는 크기로 조절 (기본 h5는 0.83em ≒ 13.3px)
-    margin: 0;
+    font-size: 16px; // ✅ 고정 폰트 크기
+    padding: 6px 14px;
     font-weight: 600;
+    margin: 0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
