@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import logo from "../img/logo_new.png";
+import logo from "../img/logo.png";
 import Menu from "./Menu";
 
 // Header.jsx
@@ -12,7 +12,7 @@ const HeaderWrapper = styled.div`
   left: 0;
   z-index: 1000;
   width: 100%;
-  height: clamp(60px, 8vh, 90px); // ✅ 작은 화면에서도 높이 확보
+  height: clamp(70px, 8vh, 90px); // ✅ 작은 화면에서도 높이 확보
   background: white;
   display: flex;
   justify-content: space-between;
@@ -28,8 +28,8 @@ const HeaderWrapper = styled.div`
 const Logo = styled.img`
   height: clamp(40px, 8vh, 60px);
   width: auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 `;
 
 const Header = () => {

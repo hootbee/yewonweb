@@ -70,11 +70,6 @@ const Brand = styled.p`
   margin: 2px 0;
 `;
 
-const Price = styled.p`
-  font-size: 15px;
-  color: #333;
-  margin: 2px 0;
-`;
 
 const Anchor = styled.div`
   scroll-margin-top: 80px;
@@ -244,13 +239,11 @@ const AirStellar = () => {
     {
       name: "Air Stella No.1",
       brand: "STATIC",
-      price: "From ฿600 per month",
       img: objectImg,
     },
     {
       name: "Air Stella No.2",
       brand: "WEARABLE",
-      price: "From ฿1400 per month",
       img: wearableImg,
     },
   ];
@@ -269,7 +262,6 @@ const AirStellar = () => {
 />
               <ProductName>{product.name}</ProductName>
               <Brand>{product.brand}</Brand>
-              <Price>{product.price}</Price>
             </Product>
           ))}
         </ProductContainer>

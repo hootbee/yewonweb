@@ -3,16 +3,10 @@ import styled from "styled-components";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import img1 from "../img/news1.png";
 import img2 from "../img/news2.png";
-import img3 from "../img/news2.png";
+import img3 from "../img/news3.png";
 
 const newsList = [
-  {
-    img: img1,
-    title: "조재혁 교수, 국가연구개발사업 우수성과 20선 선정",
-    summary: "전북대학교 조재혁 교수(공대 소프트웨어공학과)...",
-    link: "https://www.jbnu.ac.kr/web/Board/104793/detailView.do?pageIndex=1&menu=2382",
-  },
-  {
+      {
     img: img2,
     title: "AI로 공기 정화·건강 관리하는 '에어스텔라' 플랫폼",
     summary: "전북대 소프트웨어공학과 조재혁 교수 연구팀이...",
@@ -20,10 +14,18 @@ const newsList = [
   },
   {
     img: img3,
-    title: "전북대, 차세대 반도체 연구소 개소 및 MOU 체결",
-    summary: "차세대 반도체 기술을 선도할 연구소가 전북대에 새롭게 들어섰습니다...",
-    link: "https://www.example.com/article/semiconductor",
+    title: "전북대 조재혁 교수팀, ‘감염병 대응 AI 시스템’ 개발 본격화",
+    summary: "국내 최초로 감염병 대응에 특화된 소형 언어모델(sLLM) 및 예측·데이터 통합 플랫폼 개발에 착수",
+    link: "https://www.jjan.kr/article/20250611580238",
   },
+  {
+    img: img1,
+    title: "조재혁 교수, 국가연구개발사업 우수성과 20선 선정",
+    summary: "전북대학교 조재혁 교수(공대 소프트웨어공학과)...",
+    link: "https://www.jbnu.ac.kr/web/Board/104793/detailView.do?pageIndex=1&menu=2382",
+  },
+
+
 ];
 
 // ===== Styled Components =====
