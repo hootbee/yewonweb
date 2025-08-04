@@ -28,7 +28,7 @@ const MenuWrapper = styled.div`
 
   // Menu.jsx
   h5 {
-    font-size: 16px; // ✅ 고정 폰트 크기
+    font-size: 14px; // ✅ 고정 폰트 크기
     padding: 6px 14px;
     font-weight: 600;
     margin: 0;
@@ -39,7 +39,7 @@ const MenuWrapper = styled.div`
 
   @media (max-width: 768px) {
     h5 {
-      font-size: 16px; // ✅ 모바일 대응
+      font-size: 14px; // ✅ 모바일 대응
     }
   }
 `;

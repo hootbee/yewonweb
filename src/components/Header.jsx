@@ -12,7 +12,7 @@ const HeaderWrapper = styled.div`
   left: 0;
   z-index: 1000;
   width: 100%;
-  height: clamp(60px, 8vh, 90px); // ✅ 작은 화면에서도 높이 확보
+  height: clamp(70px, 8vh, 90px); // ✅ 작은 화면에서도 높이 확보
   background: white;
   display: flex;
   justify-content: space-between;
@@ -26,8 +26,10 @@ const HeaderWrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  height: clamp(40px, 8vh, 60px); // ✅ 로고도 반응형으로
+  height: clamp(40px, 8vh, 60px);
   width: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
 `;
 
 const Header = () => {

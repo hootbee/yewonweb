@@ -5,7 +5,7 @@ import ceoImg from "../img/prof.png";
 const Container = styled.div`
   background: #ffffff;
   min-height: 100vh;
-  padding: 80px 20px;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
 const PhotoBox = styled.div`
   width: 40%;
   max-width: 400px;
+  margin-top: 40px;
 
   img {
     width: 100%;
@@ -40,6 +41,7 @@ const PhotoBox = styled.div`
 
   @media (max-width: 768px) {
     width: 80%;
+    margin-top: 20px;
   }
 `;
 
@@ -131,8 +133,8 @@ const Section = styled.div`
 `;
 
 const Anchor = styled.div`
-  scroll-margin-top: 80px; // 헤더 높이 + 여유
-  height: 0; // 높이를 0으로 설정하여 공간 차지하지 않도록 함
+  scroll-margin-top: 80px;
+  height: 0;
 `;
 
 const CEOProfile = () => {
@@ -163,11 +165,13 @@ const CEOProfile = () => {
           <Section>
             <h4>주요 활동</h4>
             <ul>
-              <li>보건복지부 GFID 위원장</li>
-              <li>산업부 AI 반도체·센서 R&D 위원장</li>
-              <li>과기정통부 패키지 AI 위원장</li>
-              <li>스마트시티/SBAS 위원 (국토부)</li>
-              <li>2024 환경 R&D 우수성과 20선 선정</li>
+              <li>(現) 범부처방역연계감염병연구개발 비상임위원(복지부)</li>
+              <li>(現) 의료데이터 중심병원 사업조정위원(복지부)</li>
+              <li>(現) 국립재활원 인공지능 분야 자문위원(복지부)</li>
+              <li>(現) 인공지능첨단유망/인공지능융합선도사업 위원(과기부)</li>
+              <li>환경보건빅데이터구축 활용 고도화사업 기획위원(환경부)</li>
+              <li>국가연구개발사업 국가과학기술 지식정보서비스(NTIS) 구축 및 운영(과기부)</li>
+              <li>국가연구개발사업 빅데이터 플랫폼 구축을 위한 정보화전략계획(ISP) 수립</li>
             </ul>
           </Section>
         </InfoBox>

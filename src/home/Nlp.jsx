@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import digitalBrain from "../img/digital_brain.png";
 
 // 전체 배경 및 중앙 정렬
 const Wrapper = styled.div`
@@ -33,19 +34,20 @@ const LeftContent = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 36px;
+  position: relative;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 16px;
-`;
+  `;
 
 const DescriptionBlock = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: #e0e0e0;
 `;
 
 const SectionTitle = styled.h4`
-  font-size: 17px;
+  font-size: 22px;
   font-weight: bold;
   color: #ffffff;
   margin: 16px 0 8px;
@@ -55,6 +57,7 @@ const Ul = styled.ul`
   padding-left: 24px;
   margin-bottom: 12px;
   list-style-type: disc;
+
   li {
     margin-bottom: 6px;
     text-indent: -10px;
@@ -68,29 +71,32 @@ const CircleContainer = styled.div`
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  margin: 0 auto;
+  margin-top: 35px;
   transform: translateX(-60px);
+
   &::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     top: 0;
     left: 0;
   }
 `;
 
-const CenterImage = styled.div`
-  width: 200px;
-  height: 200px;
-  background: url("/images/lock-knob.png") no-repeat center/cover;
-  border-radius: 50%;
+const CenterImage = styled.img`
+  width: 300px;              // ✔ 기존 200px → 확대
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;        // ✔ 부드러운 가장자리
+  transition: all 0.3s ease;
 `;
 
 const RotatingGroup = styled.div`
@@ -106,14 +112,14 @@ const RotatingGroup = styled.div`
 
 const Dot = styled.div`
   position: absolute;
-  width: ${({ $active }) => ($active ? "14px" : "8px")};
-  height: ${({ $active }) => ($active ? "14px" : "8px")};
+  width: ${({ $active }) => ($active ? "18px" : "8px")};
+  height: ${({ $active }) => ($active ? "18px" : "8px")};
   background: ${({ $active }) => ($active ? "#3da5ff" : "#ffffff88")};
   border: ${({ $active }) => ($active ? "4px solid #3da5ff" : "none")};
   border-radius: 50%;
   top: ${({ top }) => top};
   left: ${({ left }) => left};
-  transform: translate(-50%, -50%); /* 점의 중앙이 top/left에 오도록 */
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   box-shadow: ${({ $active }) =>
     $active ? "0 0 10px rgba(61, 165, 255, 0.6)" : "none"};
@@ -122,14 +128,14 @@ const Dot = styled.div`
 const DotLabel = styled.div`
   position: absolute;
   color: white;
-  transform: translate(-50%, -50%); /* 라벨의 중앙이 top/left에 오도록 */
+  transform: translate(-50%, -50%);
   text-align: center;
   white-space: pre-line;
   word-break: keep-all;
   top: ${({ top }) => top};
   left: ${({ left }) => left};
   transition: all 0.3s ease;
-  font-size: ${({ $isActive }) => ($isActive ? "22px" : "14px")};
+  font-size: ${({ $isActive }) => ($isActive ? "24px" : "18px")};
   font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;
 
@@ -145,10 +151,9 @@ const offerings = [
       "이미지와 텍스트 결합을 통한 정보 추출",
       "대규모 텍스트 데이터 분석 및 분류",
     ],
-    // 하단 (200, 400) 부근 - 점과 라벨 간격 조정
-    top: "395px",
+    top: "400px",
     left: "200px",
-    labelTop: "450px", // 455px -> 450px (조금 더 가까이)
+    labelTop: "450px",
     labelLeft: "200px",
   },
   {
@@ -162,37 +167,44 @@ const offerings = [
       "스마트 헬스케어 및 원격 진료 시스템",
       "스마트 시티 및 자율 시스템",
     ],
-    // 우측 (400, 200) 부근 - 점과 라벨 간격 조정 (너무 멀지 않게)
     top: "200px",
-    left: "395px",
+    left: "400px",
     labelTop: "200px",
-    labelLeft: "460px", // 500px -> 460px (점과 가깝게)
+    labelLeft: "460px",
   },
   {
-    title: "Time Series Data",
-    skills: ["LSTM, Autoregressive 모델", "시계열 예측 알고리즘"],
+    title: "Time Series\nData",
+    skills: [
+      "PatchTST / TimeLLM",
+      "LSTM/BiLSTM",
+      "Self-supervised learning",
+      "Multivariate Time Series Analysis"],
     applications: [
       "환경 데이터 분석",
       "웨어러블 디바이스로 수집된 건강 데이터의 예측 분석",
     ],
-    // 상단 (200, 0) 부근 - 점과 라벨 간격 조정
-    top: "5px",
+    top: "0px",
     left: "200px",
-    labelTop: "-50px", // -55px -> -50px (조금 더 가까이)
+    labelTop: "-60px",
     labelLeft: "200px",
   },
   {
     title: "AI Agent\n&\nMultimodal",
-    skills: ["CNN, Autoencoder", "다중 모달 학습 알고리즘"],
+    skills: [
+      "협동로봇 통합 제어 에이전트 설계", 
+      "품질 검사 및 예측을 위한 AI 기반 시각 인식 알고리즘", 
+      "예외 상황 탐지를 위한 멀티모달 이상 탐지 알고리즘", 
+      "전문가 피드백 반영 기반 모델 튜닝 및 성능 최적화"],
     applications: [
-      "이미지, 텍스트, 모션, 신체 신호 등",
-      "센서 데이터 통합 분석을 통한 환경 및 건강 데이터 처리",
+      "영상, 텍스트, 시계열, 센서 등 다양한 멀티모달 데이터 기반 통합 판단",
+      "제조 설비 환경에서의 협동로봇 품질 검사 및 예측",
+      "테스트 환경 구축 및 이상 상황 감지 자동화",
+      "실데이터 기반의 시스템 안정성 평가 및 연동 구조 점검",
     ],
-    // 좌측 (0, 200) 부근 - 점과 라벨 간격 조정
     top: "200px",
-    left: "5px",
+    left: "0px",
     labelTop: "200px",
-    labelLeft: "-90px", // -95px -> -90px (조금 더 가까이)
+    labelLeft: "-70px",
   },
 ];
 
@@ -206,7 +218,7 @@ const NlpCircular = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const westIndexMap = [3, 0, 1, 2]; // 0°, 90°, 180°, 270°일 때 서쪽 점에 오는 인덱스
+  const westIndexMap = [3, 0, 1, 2];
   const currentIndex = westIndexMap[(rotateDeg / 90) % 4];
   const current = offerings[currentIndex];
 
@@ -230,30 +242,30 @@ const NlpCircular = () => {
             </Ul>
           </DescriptionBlock>
         </LeftContent>
-        <CircleContainer>
-          <RotatingGroup $rotateDeg={rotateDeg}>
-            {offerings.map((item, idx) => (
-              <React.Fragment key={idx}>
-                <Dot
-                  top={item.top}
-                  left={item.left}
-                  $active={currentIndex === idx}
-                />
-                <DotLabel
-                  top={item.labelTop}
-                  left={item.labelLeft}
-                  $isActive={currentIndex === idx}
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`,
-                  }}
-                >
-                  {item.title}
-                </DotLabel>
-              </React.Fragment>
-            ))}
-          </RotatingGroup>
-          <CenterImage />
-        </CircleContainer>
+<CircleContainer>
+  <RotatingGroup $rotateDeg={rotateDeg}>
+    {offerings.map((item, idx) => (
+      <React.Fragment key={idx}>
+        <Dot
+          top={item.top}
+          left={item.left}
+          $active={currentIndex === idx}
+        />
+        <DotLabel
+          top={item.labelTop}
+          left={item.labelLeft}
+          $isActive={currentIndex === idx}
+          style={{
+            transform: `translate(-50%, -50%) rotate(${-rotateDeg}deg)`,
+          }}
+        >
+          {item.title}
+        </DotLabel>
+      </React.Fragment>
+    ))}
+  </RotatingGroup>
+  <CenterImage src={digitalBrain} alt="Digital Brain" />
+</CircleContainer>
       </Inner>
     </Wrapper>
   );

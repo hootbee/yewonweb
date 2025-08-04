@@ -45,7 +45,7 @@ const MainImgContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font: bold 25px "arial";
+  font: bold 30px "arial";
   text-align: center;
   margin: 0;
   padding: 0;

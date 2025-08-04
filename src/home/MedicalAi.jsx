@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { FiArrowRight } from "react-icons/fi";
 import cardBg from "../img/object.png"; // 실제 이미지 경로
 
-// 카드 콘텐츠
 const offerings = [
   {
     title: "주요 질병 진단 및 예측을 위한\nAI 알고리즘 개발",
@@ -27,7 +26,6 @@ const offerings = [
   },
 ];
 
-// 전체 컨테이너 (스크롤스냅용 섹션에 맞춤)
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -42,7 +40,6 @@ const Container = styled.div`
   gap: 40px;
 `;
 
-// 중앙 제목 영역
 const CenterSection = styled.div`
   text-align: center;
 `;
@@ -84,17 +81,30 @@ const ViewButton = styled.a`
   }
 `;
 
-// 카드 그리드 영역
 const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  display: flex;
   gap: 20px;
   width: 100%;
-  max-width: 1200px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
-// 카드 단위
 const Card = styled.div`
+  flex: 0 0 230px;
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
   padding: 16px;
@@ -105,6 +115,7 @@ const Card = styled.div`
   justify-content: flex-end;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  scroll-snap-align: start;
 
   &:hover {
     transform: scale(1.03);
@@ -120,7 +131,7 @@ const ArrowIcon = styled(FiArrowRight)`
 `;
 
 const CardText = styled.div`
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 1.5;
   white-space: pre-line;
