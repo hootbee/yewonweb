@@ -48,7 +48,7 @@ const Footer = () => {
       <ScrollAnchor id="contact" />
       <FooterWrapper>
         <FooterTitle>문의하기</FooterTitle>
-        <FooterText>Email. humanai.plus@gmail.com</FooterText>
+        <FooterText>Email. humanai.plus7@gmail.com</FooterText>
         <FooterText>Tel. 063-270-4771</FooterText>
         <FooterText>
           Address. 전라북도 전주시 덕진구 백제대로 567 전북대학교 공학5호관

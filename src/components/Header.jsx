@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import logo from "../img/logo.png";
+import logo from "../img/image.png";
 import Menu from "./Menu";
 
 // Header.jsx
