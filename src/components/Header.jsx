@@ -26,7 +26,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  height: clamp(40px, 8vh, 60px);
+  height: clamp(20px, 4vh, 30px);
   width: auto;
   padding-top: 0px;
   padding-bottom: 0px;
