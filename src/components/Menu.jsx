@@ -72,6 +72,10 @@ const Menu = () => {
       <a href="#contact">
         <h5>CONTACT</h5>
       </a>
+
+      <a href="#chatbot">
+        <h5>CHATBOT</h5>
+      </a>
     </MenuWrapper>
   );
 };

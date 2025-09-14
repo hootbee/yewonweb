@@ -82,29 +82,24 @@ const ViewButton = styled.a`
 `;
 
 const CardGrid = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개 */
   gap: 20px;
   width: 100%;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scroll-snap-type: x mandatory;
+  max-width: 900px; /* 가운데 고정 */
+  justify-content: center;
+  margin: 0 auto;
 
-  &::-webkit-scrollbar {
-    height: 8px;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* 모바일에서는 2열 */
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; /* 작은 화면에서는 1열 */
   }
 `;
 
 const Card = styled.div`
-  flex: 0 0 230px;
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
   padding: 16px;
@@ -115,7 +110,6 @@ const Card = styled.div`
   justify-content: flex-end;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  scroll-snap-align: start;
 
   &:hover {
     transform: scale(1.03);
