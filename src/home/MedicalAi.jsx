@@ -81,21 +81,25 @@ const ViewButton = styled.a`
   }
 `;
 
-const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개 */
+/* ✅ 행을 감싸는 컨테이너 */
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 900px; /* 가운데 고정 */
-  justify-content: center;
+  max-width: 900px;
   margin: 0 auto;
+`;
+
+const Row = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: ${({ count }) =>
+    count === 3 ? "space-between" : "center"};
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); /* 모바일에서는 2열 */
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr; /* 작은 화면에서는 1열 */
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `;
 
@@ -103,6 +107,7 @@ const Card = styled.div`
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
   padding: 16px;
+  width: 230px;
   height: 200px;
   position: relative;
   display: flex;
@@ -137,6 +142,10 @@ const CardText = styled.div`
 `;
 
 const MedicalAi = () => {
+  // offerings 배열을 위 3개 / 아래 2개로 나눔
+  const topRow = offerings.slice(0, 3);
+  const bottomRow = offerings.slice(3);
+
   return (
     <Container id="healthCare">
       <CenterSection>
@@ -151,14 +160,24 @@ const MedicalAi = () => {
         </ViewButton>
       </CenterSection>
 
-      <CardGrid>
-        {offerings.map((item, index) => (
-          <Card key={index} bg={item.bg}>
-            <ArrowIcon />
-            <CardText>{item.title}</CardText>
-          </Card>
-        ))}
-      </CardGrid>
+      <CardWrapper>
+        <Row count={topRow.length}>
+          {topRow.map((item, index) => (
+            <Card key={index} bg={item.bg}>
+              <ArrowIcon />
+              <CardText>{item.title}</CardText>
+            </Card>
+          ))}
+        </Row>
+        <Row count={bottomRow.length}>
+          {bottomRow.map((item, index) => (
+            <Card key={index} bg={item.bg}>
+              <ArrowIcon />
+              <CardText>{item.title}</CardText>
+            </Card>
+          ))}
+        </Row>
+      </CardWrapper>
     </Container>
   );
 };
