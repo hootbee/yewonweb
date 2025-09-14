@@ -5,7 +5,7 @@ import News from "./News";
 import Research from "./Research";
 import MedicalAi from "./MedicalAi";
 import Environment from "./Environment";
-import Footer from "../components/Footer"; // ✅ 추가
+import Footer from "../components/Footer";
 import Chatbot from "./Chatbot";
 
 const GradientBackground = styled.div`
@@ -40,8 +40,9 @@ const Gradation = () => {
         <SectionWrapper>
           <MedicalAi />
           <Environment />
-          <AirStellar />
           <Chatbot/>
+          <AirStellar />
+          
           <News />
           <Ceo />
           <Footer /> {/* ✅ SnapSection 없이 자연스럽게 Ceo 아래에 배치 */}

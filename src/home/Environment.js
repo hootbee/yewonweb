@@ -36,7 +36,6 @@ const Container = styled.div`
   background: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   gap: 40px;
 `;
@@ -82,34 +81,28 @@ const ViewButton = styled.a`
   }
 `;
 
-const CardGrid = styled.div`
+/* ✅ 3 + 2 행 구조 */
+const CardWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  max-width: 900px;
   width: 100%;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scroll-snap-type: x mandatory;
-
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
+  margin: 0 auto;
 `;
 
+const Row = styled.div`
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  gap: 50px; /* 카드 간격 통일 */
+  flex-wrap: wrap;
+`;
 
 const Card = styled.div`
-  flex: 0 0 230px;
   background: url(${(props) => props.bg}) no-repeat center center / cover;
   border-radius: 16px;
   padding: 16px;
+  width: 230px;
   height: 200px;
   position: relative;
   display: flex;
@@ -117,7 +110,6 @@ const Card = styled.div`
   justify-content: flex-end;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  scroll-snap-align: start;
 
   &:hover {
     transform: scale(1.03);
@@ -146,6 +138,9 @@ const CardText = styled.div`
 `;
 
 const Environment = () => {
+  const topRow = offerings.slice(0, 3);
+  const bottomRow = offerings.slice(3);
+
   return (
     <Container id="environmentAI">
       <CenterSection>
@@ -162,14 +157,24 @@ const Environment = () => {
         </ViewButton>
       </CenterSection>
 
-      <CardGrid>
-        {offerings.map((item, index) => (
-          <Card key={index} bg={item.bg}>
-            <ArrowIcon />
-            <CardText>{item.title}</CardText>
-          </Card>
-        ))}
-      </CardGrid>
+      <CardWrapper>
+        <Row>
+          {topRow.map((item, index) => (
+            <Card key={index} bg={item.bg}>
+              <ArrowIcon />
+              <CardText>{item.title}</CardText>
+            </Card>
+          ))}
+        </Row>
+        <Row>
+          {bottomRow.map((item, index) => (
+            <Card key={index} bg={item.bg}>
+              <ArrowIcon />
+              <CardText>{item.title}</CardText>
+            </Card>
+          ))}
+        </Row>
+      </CardWrapper>
     </Container>
   );
 };

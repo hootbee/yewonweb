@@ -57,6 +57,10 @@ const Menu = () => {
         <h5>RESEARCH</h5>
       </a>
 
+      <a href="#chatbot">
+        <h5>CHATBOT</h5>
+      </a>
+      
       <a href="#airStellar">
         <h5>PRODUCT</h5>
       </a>
@@ -73,9 +77,6 @@ const Menu = () => {
         <h5>CONTACT</h5>
       </a>
 
-      <a href="#chatbot">
-        <h5>CHATBOT</h5>
-      </a>
     </MenuWrapper>
   );
 };

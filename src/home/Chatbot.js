@@ -1,338 +1,185 @@
-import React, { useState, useEffect } from "react";
+// Chatbot.js
+import React from "react";
 import styled from "styled-components";
-import objectImg from "../img/static.png";
-import wearableImg from "../img/wearable.png";
+import env1 from "../img/env_1.png";
+import env2 from "../img/env_2.png";
+import env3 from "../img/env_3.png";
+import env4 from "../img/env_4.png";
 
-const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background: white;
-  position: relative;
-  padding: 100px 20px;
-  box-sizing: border-box;
-  overflow-x: hidden;
-`;
-
-const BackgroundText = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: "Playfair Display", serif;
-  font-size: 230px;
-  font-weight: 300;
-  color: #3d3d1f;
-  opacity: 0.15;
-  z-index: 0;
-  white-space: nowrap;
-  pointer-events: none;
-`;
-
-const ProductContainer = styled.div`
+/** ===============================
+ *  Layout
+ *  =============================== */
+const Wrapper = styled.section`
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 120px;
-  margin-top: 200px;
-  z-index: 1;
-  position: relative;
-`;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 80px 100px;
+  background: #0b0f14;
+  color: #e8f0f7;
 
-const Product = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-`;
-
-const ProductImage = styled.img`
-  width: ${(props) =>
-    props.productName.includes("No.1")
-      ? "500px"
-      : props.productName.includes("No.2")
-      ? "220px"
-      : "400px"};
-  height: auto;
-  margin-bottom: ${(props) =>
-    props.productName.includes("No.2") ? "60px" : "24px"};
-  transition: transform 0.5s ease;
-`;
-
-const ProductName = styled.h3`
-  font-size: 24px;
-  margin: 6px 0;
-`;
-
-const Brand = styled.p`
-  font-size: 20px;
-  color: gray;
-  margin: 2px 0;
-`;
-
-
-const Anchor = styled.div`
-  scroll-margin-top: 80px;
-  height: 0;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.96);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const InnerZone = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: white;
-
-  &.closing {
-    pointer-events: none;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 40px;
+    padding: 56px 24px;
   }
 `;
 
-const SlidingImage = styled.div`
+const Left = styled.div`
   flex: 1;
-  position: relative;
-
-  &.entering {
-    animation: slideFromCenter 1s ease forwards;
-  }
-
-  &.closing {
-    animation: slideLeftOut 1s ease forwards;
-  }
-
-  img {
-    position: absolute;
-    left: 70%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: ${({ productName }) =>
-      productName.includes("No.1") ? "150%" : "80%"};
-    height: auto;
-  }
-
-  @keyframes slideFromCenter {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-10%);
-    }
-  }
-
-  @keyframes slideLeftOut {
-    from {
-      transform: translateX(-10%);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-`;
-
-const InfoPanel = styled.div`
-  flex: 1;
-  padding: 80px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: slideIn 1s ease forwards;
+
+  h5 {
+    color: #8ba0b2;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0px;
+  }
 
   h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
+    font-size: 56px;
+    font-weight: 350;
+    line-height: 1.2;
+    margin-bottom: 18px;
 
-  h4 {
-    font-size: 20px;
-    font-weight: 500;
-    color: #666;
-    margin-bottom: 8px;
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
   }
 
   p {
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 24px;
-  }
-
-  th, td {
-    font-size: 15px;     /*  표 글씨 크기 여기서 조정 */
-    text-align: center;  /*  가운데 정렬 유지 */
-    padding: 12px 16px;
-    border: 1px solid #ccc;
-  }
-
-  th {
-    background-color: #f0f0f0;
-    font-weight: 600;
-    width: 35%;
-  }
-
-  /* 애니메이션 */
-  .closing & {
-    animation: slideOut 1s ease forwards;
-  }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(20%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-  }
-
-  @keyframes slideOut {
-    from {
-      opacity: 1;
-      transform: translateX(0%);
-    }
-    to {
-      opacity: 0;
-      transform: translateX(20%);
-    }
+    font-size: 16px;   /* 오타 수정: 1ㄴ6px -> 16px */
+    color: #b8c7d4;
+    margin-bottom: 28px;
+    line-height: 1.7;
   }
 `;
 
+/** ===============================
+ *  ViewButton (링크 버튼)
+ *  =============================== */
+const ViewButton = styled.a`
+  width: fit-content;
+  background: #e6f0ff;
+  color: #0a2540;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(230, 240, 255, 0.15);
+  }
+`;
+
+/** ===============================
+ *  Cards (Right) - 지그재그(바람개비) 배치
+ *  =============================== */
+const Cards = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;         /* 2열 */
+  grid-template-rows: repeat(3, 220px);   /* 3행 고정: Tall 카드가 2행을 차지하도록 */
+  gap: 20px;
+  max-width: 620px;
+  align-self: center;
+
+  @media (max-width: 768px) {
+    grid-template-rows: repeat(3, 180px);
+    gap: 14px;
+  }
+`;
+
+// 공통 카드
+const Card = styled.div`
+  background: #101823;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  outline: 1px solid rgba(255, 255, 255, 0.06);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    color: #8ba0b2;
+    opacity: 0.9;
+  }
+`;
+
+/* 지그재그 포지션: 
+   - 좌상 Tall (rows 1~2, col 1)
+   - 우상 일반 (row 1, col 2)
+   - 좌하 일반 (row 3, col 1)
+   - 우하 Tall (rows 2~3, col 2)
+*/
+const TallTopLeft = styled(Card)`
+  grid-area: 1 / 1 / 3 / 2;
+  transform: translateY(-40px);
+  background: url(${env1}) no-repeat center/cover;
+`;
+const TopRight = styled(Card)`
+  grid-area: 1 / 2 / 2 / 3;
+  transform: translateY(40px);
+  background: url(${env2}) no-repeat center/cover;
+`;
+const BottomLeft = styled(Card)`
+  grid-area: 3 / 1 / 4 / 2;
+  transform: translateY(-40px);
+  background: url(${env4}) no-repeat center/cover;
+`;
+const TallBottomRight = styled(Card)`
+  grid-area: 2 / 2 / 4 / 3;
+  transform: translateY(40px);
+  background: url(${env3}) no-repeat center/cover;
+`;
+
+/** ===============================
+ *  Component
+ *  =============================== */
 const Chatbot = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isClosing, setIsClosing] = useState(false);
-  const [isEntering, setIsEntering] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = selectedProduct ? "hidden" : "auto";
-  }, [selectedProduct]);
-
-  const handleOpen = (product) => {
-    setSelectedProduct(product);
-    setIsEntering(false);
-    setTimeout(() => setIsEntering(true), 50);
-  };
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setSelectedProduct(null);
-      setIsClosing(false);
-      setIsEntering(false);
-    }, 1000);
-  };
-
-  const products = [
-    {
-      name: "Air Stella No.1",
-      brand: "STATIC",
-      img: objectImg,
-    },
-    {
-      name: "Air Stella No.2",
-      brand: "WEARABLE",
-      img: wearableImg,
-    },
-  ];
-
   return (
-    <>
-      <Wrapper id="chatbot">
-        <BackgroundText>AIR-STELLA</BackgroundText>
-        <ProductContainer>
-          {products.map((product, idx) => (
-            <Product key={idx} onClick={() => handleOpen(product)}>
-              <ProductImage
-  src={product.img}
-  alt={product.name}
-  productName={product.name}
-/>
-              <ProductName>{product.name}</ProductName>
-              <Brand>{product.brand}</Brand>
-            </Product>
-          ))}
-        </ProductContainer>
+    <Wrapper id="chatbot">
+      <Left>
+        <h5>BIG-DATA PLATFORM WORK</h5>
+        <h2>
+          sLLM 기반의
+          <br />
+          <span style={{ color: "#e6f0ff", fontWeight: "bold" }}>
+            챗봇 대화형 인터페이스
+          </span>
+        </h2>
+        <p>
+          사용자의 건강 프로필과 환경 데이터를 바탕으로 맞춤형 건강 상담과 답변을 제공합니다.
+          또한, AgentRAG 기반 의약품 데이터 검색을 통해 신뢰성 있는 서비스를 지원합니다.
+        </p>
 
-        {selectedProduct && (
-          <Overlay onClick={handleClose}>
-            <InnerZone className={isClosing ? "closing" : ""}>
-              <SlidingImage
-  productName={selectedProduct.name}
-  onClick={handleClose}
-  className={`${isEntering ? "entering" : ""} ${isClosing ? "closing" : ""}`}
->
-  <img src={selectedProduct.img} alt={selectedProduct.name} />
-</SlidingImage>
-              <InfoPanel onClick={(e) => e.stopPropagation()}>
-                <h2>{selectedProduct.name}</h2>
-                <h4>{selectedProduct.brand}</h4>
-                <p>{selectedProduct.price}</p>
-                <table style={{ marginTop: "24px", borderCollapse: "collapse", width: "100%" }}>
-                  <tbody>
-                    {(selectedProduct.name.includes("No.1")
-                      ? [
-                          ["환경측정", "온도, 습도, 소음, 조도, 라돈"],
-                          ["가스측정", "이산화탄소(1등급), VOC, 포름알데히드, 황화수소, 이산화질소, 일산화탄소, 오존, 암모니아"],
-                          ["동작온도", "-20 ~ 50℃"],
-                          ["아답터", "12V, 3A"],
-                          ["데이터표시", "LCD 패널, PC 프로그램 및 Mobile 프로그램"],
-                          ["데이터저장", "서버 전송 저장"],
-                          ["상태표시", "4색 LED로 상태표시"],
-                          ["전송방식", "BLE, WIFI, LAN, RS485, USB, C-TYPE"],
-                          ["크기", "152mm * 183mm * 38mm"],
-                          ["무게", "550g"],
-                          ["제품적용", "쉘터, 어린이집, 병원, 학교, 지하도 등 다양한 실내공간"],
-                        ]
-                      : [
-                          ["환경측정", "온도, 습도, 소음, 조도"],
-                          ["가스측정", "이산화탄소(1등급), VOC, 포름알데히드, 일산화탄소, 오존, 암모니아"],
-                          ["동작온도", "-20 ~ 50℃"],
-                          ["아답터", "16V, 4.5A"],
-                          ["데이터표시", "PC 프로그램 및 Mobile 프로그램"],
-                          ["데이터저장", "서버 전송 저장"],
-                          ["상태표시", "4색 LED로 상태표시"],
-                          ["전송방식", "BLE, WIFI, LAN, RS485, USB, C-TYPE"],
-                          ["크기", "138mm * 154mm * 38mm"],
-                          ["무게", "380g (배터리 제외)"],
-                          ["제품적용", "쉘터, 어린이집, 병원, 학교, 지하도 등 다양한 실내공간"],
-                        ]
-                    ).map(([label, value], idx) => (
-                      <tr key={idx}>
-                        <th
-                          style={{
-                            textAlign: "center",
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            background: "#f0f0f0",
-                            width: "35%",
-                          }}
-                        >
-                          {label}
-                        </th>
-                        <td style={{ padding: "8px", border: "1px solid #ccc" }}>{value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </InfoPanel>
-            </InnerZone>
-          </Overlay>
-        )}
-      </Wrapper>
-    </>
+        <ViewButton
+          href="https://envhealthadmin.jbnu.ac.kr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          플랫폼 둘러보기
+        </ViewButton>
+      </Left>
+
+      {/* Right Cards - 지그재그 배치 */}
+      <Cards>
+        <TallTopLeft aria-label="좌상 Tall 카드(이미지 자리)" />
+        <TopRight aria-label="우상 일반 카드(이미지 자리)" />
+        <BottomLeft aria-label="좌하 일반 카드(이미지 자리)" />
+        <TallBottomRight aria-label="우하 Tall 카드(이미지 자리)" />
+      </Cards>
+    </Wrapper>
   );
 };
 
