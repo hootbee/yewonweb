@@ -93,13 +93,11 @@ const CardWrapper = styled.div`
 
 const Row = styled.div`
   display: flex;
-  gap: 20px;
-  justify-content: ${({ count }) =>
-    count === 3 ? "space-between" : "center"};
+  justify-content: center; /* ✅ 모든 줄 가운데 정렬 */
+  gap: 50px; /* ✅ 카드 간격 통일 */
 
   @media (max-width: 768px) {
     flex-wrap: wrap;
-    justify-content: center;
   }
 `;
 
@@ -142,7 +140,6 @@ const CardText = styled.div`
 `;
 
 const MedicalAi = () => {
-  // offerings 배열을 위 3개 / 아래 2개로 나눔
   const topRow = offerings.slice(0, 3);
   const bottomRow = offerings.slice(3);
 
@@ -161,7 +158,7 @@ const MedicalAi = () => {
       </CenterSection>
 
       <CardWrapper>
-        <Row count={topRow.length}>
+        <Row>
           {topRow.map((item, index) => (
             <Card key={index} bg={item.bg}>
               <ArrowIcon />
@@ -169,7 +166,7 @@ const MedicalAi = () => {
             </Card>
           ))}
         </Row>
-        <Row count={bottomRow.length}>
+        <Row>
           {bottomRow.map((item, index) => (
             <Card key={index} bg={item.bg}>
               <ArrowIcon />
